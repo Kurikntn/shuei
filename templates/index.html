@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="top-container">
+    <a href="#" class="top-logo"><img class="top-logo-image" src="{% static 'images/shuei.png' %}" height="60px"></a>
+    <a href="#" class="top-btn">部屋を作る</a>
+</div>
+<div class="rooms-container">
+    <div class="rooms-top">
+        <p class="rooms-top-title">部屋一覧</p>
+        <select class="rooms-selector">
+            <option class="rooms-selector-item">新着順</option>
+            <option class="rooms-selector-item">ランダム表示</option>
+        </select>
+    </div>
+    <div class="rooms-main">
+    <ul class="rooms-list">
+        <li class="rooms-list-top">
+            <p class="room-name">部屋の名前</p>
+            <p class="room-time">時間制限</p>
+            <p class="room-capacity">定員</p>
+        </li>
+        <li class="rooms-list-item">
+            <a href="#" class="room-link"><p class="room-name">とにかく雑談</p></a>
+            <p class="room-time">8分</p>
+            <p class="room-capacity">3人</p>
+        </li>
+        <li class="rooms-list-item">
+            <a href="#" class="room-link"><p class="room-name">怪談をしたい</p></a>
+            <p class="room-time">15分</p>
+            <p class="room-capacity">3人</p>
+        </li>
+    </ul>
+    </div>
+</div>
+{% endblock %}
