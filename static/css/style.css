@@ -1,0 +1,80 @@
+/* index.htmlのヘッダー部分 */
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  padding: 15px 50px;
+}
+.top-logo {
+  height: 60px;
+}
+.top-btn {
+  text-decoration: none;
+  background-color: #1919fa;
+  color: white;
+  line-height: 60px;
+  padding: 0 20px;
+  border-radius: 10px;
+}
+
+
+/* index.htmlのメイン部分 */
+.rooms-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+}
+.rooms-top {
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
+}
+.rooms-top-title {
+  font-size: 20px;
+}
+.rooms-selector {
+  height: 20px;
+}
+.rooms-selector-item {
+  font-size: 20px;
+}
+.rooms-main {
+  margin-top: 20px;
+}
+.rooms-list {
+  border: 1px solid black;
+}
+.rooms-list-top {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ddd;
+}
+.rooms-list-item {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid black;
+}
+.room-link {
+  text-decoration: none;
+  width: 60%;
+  color: #1919fa;
+}
+.room-link:hover {
+  text-decoration: underline;
+}
+.room-name {
+  width: 60%;
+  padding: 5px 10px;
+}
+.room-time {
+  width: 20%;
+  border-left: 1px solid black;
+  padding: 5px 10px;
+}
+.room-capacity {
+  width: 20%;
+  border-left: 1px solid black;
+  padding: 5px 10px;
+}
