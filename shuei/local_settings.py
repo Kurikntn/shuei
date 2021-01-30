@@ -1,7 +1,9 @@
 import dj_database_url
 from pathlib import Path
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 
@@ -11,7 +13,7 @@ SECRET_KEY = '*b1xubas5l2yeoipa#k50-p#mf_1)fnzg)arht#v%vhcx(7kt5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -33,6 +35,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'shuei.urls'
@@ -40,7 +43,7 @@ ROOT_URLCONF = 'shuei.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -61,13 +64,17 @@ WSGI_APPLICATION = 'shuei.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'devdb',
+        'USER': 'tmp',
+        'PASSWORD': 'devpass',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
 db_from_env = dj_database_url.config()
-DATABASE'default'].update(db_from_env)
+DATABASES['default'].update(db_from_env)
 
 
 
@@ -109,7 +116,7 @@ STATICFILES_DIRS = (
 )
 
 try:
-  from config.local_settings import *
+  from shuei.local_settings import *
 except ImportError:
   pass
 
