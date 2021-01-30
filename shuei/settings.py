@@ -37,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'shuei.urls'
@@ -44,7 +45,7 @@ ROOT_URLCONF = 'shuei.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,8 +66,12 @@ WSGI_APPLICATION = 'shuei.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'shueidb',
+        'USER': 'user',
+        'PASSWORD': 'shueipass',
+        'HOST': 'host',
+        'PORT': '',
     }
 }
 db_from_env = dj_database_url.config()
@@ -112,7 +117,7 @@ STATICFILES_DIRS = (
 )
 
 try:
-  from config.local_settings import *
+  from shuei.local_settings import *
 except ImportError:
   pass
 
