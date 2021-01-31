@@ -51,6 +51,26 @@
 </div>
 </div>
 
+<div class="join-room-modal">
+<div class="join-room-wrapper">
+    <button type="button" class="join-room-close"><span class="fas fa-times join-room-close-icon"></span></button>
+    <p class="join-room-title">部屋に入る</p>
+    <div class="join-room-info">
+        <div class="join-room-column">
+            <p>部屋の名前</p>
+            <p id="name">ここに部屋名を表示</p>
+        </div>
+        <div class="join-room-column">
+            <p>制限時間： ? 分</p>
+        </div>
+        <div class="join-room-column">
+            <p>定員　　： ? / ? 人</p>
+        </div>
+        <input type="submit" class="join-room-btn" value="入る">
+    </div>
+</div>
+</div>
+
 <div class="rooms-container">
     <div class="rooms-top">
         <p class="rooms-top-title">部屋一覧</p>
@@ -67,12 +87,12 @@
             <p class="room-capacity">定員</p>
         </li>
         <li class="rooms-list-item">
-            <a href="#" class="room-link"><p class="room-name">とにかく雑談</p></a>
+            <p class="room-name join-room">とにかく雑談</p>
             <p class="room-time">8分</p>
             <p class="room-capacity">3人</p>
         </li>
         <li class="rooms-list-item">
-            <a href="#" class="room-link"><p class="room-name">怪談をしたい</p></a>
+            <p class="room-name join-room">怪談をしたい</p>
             <p class="room-time">15分</p>
             <p class="room-capacity">3人</p>
         </li>
