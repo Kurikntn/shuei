@@ -4,14 +4,59 @@
 {% block content %}
 <div class="top-container">
     <a href="#" class="top-logo"><img class="top-logo-image" src="{% static 'images/shuei.png' %}" height="60px"></a>
-    <a href="#" class="top-btn">部屋を作る</a>
+    <button class="top-btn" id="new-room-btn">部屋を作る</button>
 </div>
+
+<div class="new-room-modal">
+<div class="new-room-wrapper">
+    <button type="button" class="new-room-close"><span class="fas fa-times new-room-close-icon"></span></button>
+    <p class="new-room-title">部屋を作る</p>
+    <form class="new-room-form">
+        <div class="new-room-column">
+            <label for="name">部屋の名前</label>
+            <input type="text" name="name" id="name" placeholder="例：雑談したい">
+        </div>
+        <div class="new-room-column">
+            <label for="time">制限時間：</label>
+            <select id="new-room-time" name="room-time">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8" selected>8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select> 分
+        </div>
+        <div class="new-room-column">
+            <label for="capacity">定員　　：</label>
+            <select id="new-room-capacity" name="room-capacity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select> 人
+        </div>
+        <input type="submit" class="new-room-btn" value="作る">
+    </form>
+</div>
+</div>
+
 <div class="rooms-container">
     <div class="rooms-top">
         <p class="rooms-top-title">部屋一覧</p>
-        <select class="rooms-selector">
-            <option class="rooms-selector-item">新着順</option>
-            <option class="rooms-selector-item">ランダム表示</option>
+        <select id="rooms-selector" name="rooms-order">
+            <option class="rooms-selector-item" value="new">新着順</option>
+            <option class="rooms-selector-item" value="random">ランダム表示</option>
         </select>
     </div>
     <div class="rooms-main">
