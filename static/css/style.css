@@ -97,6 +97,65 @@
 }
 
 
+/* index.htmlの部屋に入るモーダル */
+.join-room-modal {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  background: white;
+}
+.join-room-modal.open {
+  display: block;
+}
+.join-room-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 40px 30px;
+  position: relative;
+}
+.join-room-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.join-room-close-icon {
+  font-size: 2.5em;
+  margin: 5px;
+}
+.join-room-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.join-room-column {
+  margin-top: 30px;
+}
+.join-room-column #name {
+  width: 100%;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.join-room-btn {
+  display: block;
+  margin: 30px auto 0;
+  border: none;
+  width: 150px;
+  height: 50px;
+  background-color: #1919fa;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+
 /* index.htmlのメイン部分 */
 .rooms-container {
   display: flex;
@@ -131,17 +190,19 @@
   justify-content: space-around;
   border-top: 1px solid black;
 }
-.room-link {
-  text-decoration: none;
-  width: 60%;
-  color: #1919fa;
-}
 .room-link:hover {
   text-decoration: underline;
 }
 .room-name {
   width: 60%;
   padding: 5px 10px;
+}
+.room-name.join-room {
+  color: #1919fa;
+  cursor: pointer;
+}
+.room-name.join-room:hover {
+  text-decoration: underline;
 }
 .room-time {
   width: 20%;
