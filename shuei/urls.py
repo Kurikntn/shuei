@@ -7,4 +7,5 @@ urlpatterns = [
     path('account/', include('django.contrib.auth.urls')),
 
     path('', chat_views.index),
+    path('room/<int:room_id>', chat_views.room),
 ]

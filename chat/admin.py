@@ -1,3 +1,7 @@
 from django.contrib import admin
+from chat.models import Room
 
-# Register your models here.
+class RoomAdmin(admin.ModelAdmin):
+  list_display = ['name', 'time', 'at']
+
+admin.site.register(Room, RoomAdmin)

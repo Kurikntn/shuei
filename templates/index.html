@@ -11,7 +11,8 @@
 <div class="new-room-wrapper">
     <button type="button" class="new-room-close"><span class="fas fa-times new-room-close-icon"></span></button>
     <p class="new-room-title">部屋を作る</p>
-    <form class="new-room-form">
+    <form method="post" class="new-room-form">
+        {% csrf_token %}
         <div class="new-room-column">
             <label for="name">部屋の名前</label>
             <input type="text" name="name" id="name" placeholder="例：雑談したい">
@@ -86,16 +87,13 @@
             <p class="room-time">時間制限</p>
             <p class="room-capacity">定員</p>
         </li>
-        <li class="rooms-list-item">
-            <p class="room-name join-room">とにかく雑談</p>
-            <p class="room-time">8分</p>
-            <p class="room-capacity">3人</p>
-        </li>
-        <li class="rooms-list-item">
-            <p class="room-name join-room">怪談をしたい</p>
-            <p class="room-time">15分</p>
-            <p class="room-capacity">3人</p>
-        </li>
+        {% for room in rooms %}
+            <li class="rooms-list-item">
+                <p class="room-name join-room">{{ room.name }}</p>
+                <p class="room-time">{{ room.time }}分</p>
+                <p class="room-capacity">{{ room.capacity }}人</p>
+            </li>
+        {% endfor %}
     </ul>
     </div>
 </div>
