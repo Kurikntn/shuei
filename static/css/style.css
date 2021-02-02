@@ -214,3 +214,103 @@
   border-left: 1px solid black;
   padding: 5px 10px;
 }
+
+
+/* room.htmlのヘッダー部分 */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  border-bottom: 2px solid #ddd;
+  padding: 9px 30px;
+}
+.chat-room-name {
+  display: inline-block;
+  font-size: 25px;
+  font-weight: bold;
+}
+.chat-room-time {
+  display: inline-block;
+  margin-right: 30px;
+}
+.chat-room-close {
+  border: none;
+  width: 120px;
+  height: 40px;
+  background-color: #1919fa;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+/* room.htmlのチャット表示部分 */
+.chat-main {
+  padding: 0 30px;
+  overflow-y: scroll;
+  width: 100%;
+  height: calc(100vh - 60px - 80px);
+}
+.message {
+  margin: 25px 0;
+}
+.message-user {
+  font-weight: bold;
+}
+.message-text {
+  margin-top: 5px;
+}
+.message-image {
+  margin-top: 5px;
+}
+
+
+/* room.htmlのフォーム部分 */
+.chat-form-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #ddd;
+}
+.chat-form {
+  width: 100%;
+  height: 80px;
+  padding: 20px 30px;
+  display: flex;
+}
+.chat-form-input {
+  width: 100%;
+  display: flex;
+  background-color: white;
+}
+.chat-form-text {
+  border: none;
+  padding-left: 10px;
+  width: 100%;
+  height: 40px;
+}
+.chat-form-image {
+  background-color: #000000;
+  color: white;
+  margin: 5px 10px;
+  width: 60px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+.chat-form-btn {
+  background-color: #1919fa;
+  color: white;
+  margin-left: 20px;
+  border: none;
+  padding: 0 20px;
+  cursor: pointer;
+}
