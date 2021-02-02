@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class ="chat-header">
+  <div class="chat-header-left">
+    <p class="chat-room-name">部屋の名前</p>
+  </div>
+  <div class="chat-header-right">
+    <p class="chat-room-time">残り時間：<span id="limit-time">7:59</span></p>
+    <button type="button" class="chat-room-close">部屋を閉める</button>
+  </div>
+</div>
+
+<div class="chat-main">
+  <div class="message">
+    <p class="message-user">田中</p>
+    <p class="message-text">こんにちは。田中と言います。</p>
+    <!-- {% if message.image %} 画像があっても無くても、画像だけでも投稿可-->
+      <img class="message-image" src="" height="200px">
+    <!-- {% endif %} -->
+  </div>
+  <div class="message">
+    <p class="message-user">猫</p>
+    <p class="message-text">テストテキスト2、画像を添えて。</p>
+    <img class="message-image" src="../static/images/dummy2.png" height="200px">
+  </div>
+  <div class="message">
+    <p class="message-user">画像だけ投稿男</p>
+    <p class="message-text"></p>
+      <img class="message-image" src="../static/images/dummy3.png" height="200px">
+  </div>
+</div>
+
+<div class="chat-form-container">
+  <form class="chat-form">
+    <div class="chat-form-input">
+      <input type="text" class="chat-form-text" placeholder="ここにテキストを入力">
+      <!-- <div><img src=""></div> ここにプレビューを搭載予定-->
+      <label class="chat-form-image">
+        <span class="message-image-file">画像</span>
+        <input type="file" class="hidden">
+      </label>
+    </div>
+    <input type="submit" class="chat-form-btn" value="送信">
+  </form>
+</div>
+{% endblock %}
