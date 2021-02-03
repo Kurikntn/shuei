@@ -7,7 +7,7 @@
     <p class="chat-room-name">部屋の名前</p>
   </div>
   <div class="chat-header-right">
-    <p class="chat-room-time">残り時間：<span id="limit-time">7:59</span></p>
+    <p class="chat-room-time">残り時間：<span id="limit-minutes"></span><span id="limit-seconds"></span></p>
     <button type="button" class="chat-room-close">部屋を閉める</button>
   </div>
 </div>
@@ -45,4 +45,5 @@
     <input type="submit" class="chat-form-btn" value="送信">
   </form>
 </div>
+<script src="{% static 'javascript/timer.js' %}"></script>
 {% endblock %}
