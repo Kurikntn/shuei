@@ -36,14 +36,17 @@
   <form class="chat-form">
     <div class="chat-form-input">
       <input type="text" class="chat-form-text" placeholder="ここにテキストを入力">
-      <!-- <div><img src=""></div> ここにプレビューを搭載予定-->
       <label class="chat-form-image">
         <span class="message-image-file">画像</span>
-        <input type="file" class="hidden">
+        <input type="file" class="hidden" id="image-input">
       </label>
+      <div id="image-preview">
+        <p type="button" id="preview-close"><span class="fas fa-times preview-close-icon"></span></p>
+      </div>
     </div>
     <input type="submit" class="chat-form-btn" value="送信">
   </form>
 </div>
 <script src="{% static 'javascript/timer.js' %}"></script>
+<script src="{% static 'javascript/preview.js' %}"></script>
 {% endblock %}

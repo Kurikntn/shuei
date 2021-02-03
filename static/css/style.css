@@ -285,6 +285,7 @@
 }
 .chat-form-input {
   width: 100%;
+  position: relative;
   display: flex;
   background-color: white;
 }
@@ -303,9 +304,6 @@
   text-align: center;
   cursor: pointer;
 }
-.hidden {
-  display: none;
-}
 .chat-form-btn {
   background-color: #1919fa;
   color: white;
@@ -313,4 +311,58 @@
   border: none;
   padding: 0 20px;
   cursor: pointer;
+}
+#image-preview {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  top: -165px;
+  right: -38px;
+  border: 1px solid black;
+  border-radius: 20%;
+  display: none;
+}
+#image-preview.open {
+  display: block;
+}
+#image-preview::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border: solid black;
+  border-width: 0 1px 1px 0;
+  background-color: white;
+  display: block;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: rotate(45deg);
+  transform-origin: top left;
+  border-radius: 2px 0;
+}
+.preview-image {
+  object-fit: contain;
+  margin: 12px;
+}
+#preview-close {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background: white;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  top: -15px;
+  right: 0;
+}
+#preview-close .preview-close-icon {
+  font-size: 20px;
+}
+
+
+.hidden {
+  display: none;
 }
