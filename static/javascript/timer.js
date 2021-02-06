@@ -1,5 +1,5 @@
 function timer() {
-  let setLimitMinutes = 1;
+  let setLimitMinutes = 30;
   let limitTime = (setLimitMinutes * 60 + 1) * 1000;
 
   let minutes = document.getElementById("limit-minutes");

@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chat',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,12 @@ except ImportError:
 if not DEBUG:
   import django_heroku
   django_heroku.settings(locals())
+
+# Channels
+ASGI_APPLICATION = 'shuei.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': { 'hosts': [('127.0.0.1', 6379)], },
+    },
+}

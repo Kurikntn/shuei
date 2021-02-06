@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -28,6 +28,9 @@ def index(request):
 
 
 def room(request, room_id):
+  room = get_object_or_404(Room, id=room_id)
   t = loader.get_template('room.html')
-  c = {}
+  c = {
+    'room': room,
+  }
   return HttpResponse(t.render(c, request))

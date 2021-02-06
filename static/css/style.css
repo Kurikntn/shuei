@@ -80,7 +80,7 @@
 .new-room-column {
   margin-top: 30px;
 }
-.new-room-column #name {
+.new-room-column #room-name {
   width: 100%;
   margin-top: 10px;
 }
@@ -138,7 +138,7 @@
 .join-room-column {
   margin-top: 30px;
 }
-.join-room-column #name {
+.join-room-name {
   width: 100%;
   margin-top: 10px;
   font-weight: bold;
@@ -216,6 +216,60 @@
 }
 
 
+/* room.htmlの待機モーダル */
+.waiting-overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  opacity: 0.3;
+}
+.waiting-overlay.close {
+  display: none;
+}
+.waiting-modal {
+  position: absolute;
+  z-index: 10;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  padding: 40px;
+  background: white;
+  text-align: center;
+}
+.waiting-modal.close {
+  display: none;
+}
+.waiting-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+#name-form {
+  margin-top: 40px;
+}
+.name-form-submit {
+  background-color: #1919fa;
+  color: white;
+  border: none;
+}
+.your-name {
+  margin-top: 40px;
+  display: none;
+}
+#waiting-message {
+  margin-top: 40px;
+  line-height: 25px;
+}
+.join-count {
+  margin-top: 20px;
+}
+
+
 /* room.htmlのヘッダー部分 */
 .chat-header {
   display: flex;
@@ -289,7 +343,7 @@
 .close-room-column {
   margin-top: 40px;
 }
-.close-room-column #name {
+.close-room-name {
   width: 100%;
   margin-top: 10px;
   font-weight: bold;
@@ -304,10 +358,13 @@
   border: none;
   width: 150px;
   height: 50px;
+  line-height: 50px;
   background-color: #1919fa;
   font-size: 20px;
   color: white;
   cursor: pointer;
+  text-decoration: none;
+  text-align: center;
 }
 
 
