@@ -32,20 +32,48 @@ closeRoom.addEventListener("click", () => {
 
 const chatForm = document.getElementById("chat-form");
 const chatText = document.getElementById("chat-text");
+const chatImage = document.getElementById("image-input");
+let imageBase64 = "";
+
+chatImage.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  const imageURL = window.URL.createObjectURL(file);
+
+  const imageElement = new Image();
+  imageElement.src = imageURL;
+  
+  imageElement.onload = function() {
+    const canvasElement = document.createElement('canvas');
+    canvasElement.width = imageElement.width;
+    canvasElement.height = imageElement.height;
+    const canvasContext = canvasElement.getContext('2d');
+    canvasContext.drawImage(imageElement, 0, 0);
+    imageBase64 = canvasElement.toDataURL("image/png");
+  }
+
+});
+
+document.getElementById('preview-close').addEventListener('click', () => {
+  imageBase64 = "";
+});
 
 chatForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   let message = chatText.value;
-    if(!message){
-      return;
-    }
 
-    g_socket.send(
-      JSON.stringify({ "message": message })
-    );
+  if(message == "" && imageBase64 == ""){
+    return;
+  }
+  
+  g_socket.send(
+    JSON.stringify({ "message": message, "image": imageBase64 })
+  );
 
-    chatText.value = "";
+  chatText.value = "";
+  chatImage.value = "";
+  imageBase64 = "";
+  document.getElementById('image-preview').classList.remove("open");
 });
 
 
@@ -55,17 +83,35 @@ g_socket.onmessage = (event) => {
   let data = JSON.parse(event.data);
 
   const message = document.createElement('div');
-  const messageUser = document.createElement('p');
-  const messageText = document.createElement('p');
-
   message.setAttribute('class', 'message');
+
+  const messageUser = document.createElement('p');
   messageUser.setAttribute('class', 'message-user');
-  messageText.setAttribute('class', 'message-text');
-
   messageUser.innerText = data["username"];
-  messageText.innerText = data["message"];
-
   message.append(messageUser);
-  message.append(messageText);
+  
+  if(data["message"] && data["image"]){
+    const messageText = document.createElement('p');
+    messageText.setAttribute('class', 'message-text');
+    messageText.innerText = data["message"];
+    message.append(messageText);
+    const messageImage = document.createElement('img');
+    messageImage.setAttribute('class', 'message-image');
+    messageImage.setAttribute('src', data["image"]);
+    messageImage.setAttribute('height', '200px');
+    message.append(messageImage); 
+  } else if(data["message"])  {  
+    const messageText = document.createElement('p');
+    messageText.setAttribute('class', 'message-text');
+    messageText.innerText = data["message"];
+    message.append(messageText);
+  } else {
+    const messageImage = document.createElement('img');
+    messageImage.setAttribute('class', 'message-image');
+    messageImage.setAttribute('src', data["image"]);
+    messageImage.setAttribute('height', '200px');
+    message.append(messageImage); 
+  }
+
   messages.append(message);
 };

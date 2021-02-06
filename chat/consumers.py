@@ -35,18 +35,32 @@ class ChatConsumer( AsyncWebsocketConsumer ):
 
     else:
       strMessage = text_data_json['message']
+      image = text_data_json['image']
       data = {
         'type': 'chat_message',
         'message': strMessage,
+        'image' : image,
         'username': self.user_name,
       }
       await self.channel_layer.group_send( self.room_name, data )
 
   async def chat_message( self, data ):
-    data_json = {
-      'message': data['message'],
-      'username': data['username'],
-    }
+    if( data['message'] != "" and data['image'] != "" ):
+      data_json = {
+        'message': data['message'],
+        'image': data['image'],
+        'username': data['username'],
+      }
+    elif( data['message'] != "" ):
+      data_json = {
+        'message': data['message'],
+        'username': data['username'],
+      }
+    else:
+      data_json = {
+        'image': data['image'],
+        'username': data['username'],
+      }
     await self.send( text_data=json.dumps( data_json ) )
 
   async def join_chat( self ):
