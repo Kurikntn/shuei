@@ -56,19 +56,21 @@
 <div class="join-room-wrapper">
   <button type="button" class="join-room-close"><span class="fas fa-times join-room-close-icon"></span></button>
   <p class="join-room-title">部屋に入る</p>
-  <div class="join-room-info">
+  {% for room in rooms %}
+  <div class="join-room-info" data-room-id="{{ room.id }}">
     <div class="join-room-column">
-      <p>部屋の名前</p>
-      <p class="join-room-name">ここに部屋名を表示</p>
+      <p>部屋名</p>
+      <p class="join-room-name">{{ room.name }}</p>
     </div>
     <div class="join-room-column">
-      <p>制限時間： ? 分</p>
+      <p>制限時間： {{ room.time }} 分</p>
     </div>
     <div class="join-room-column">
-      <p>定員　　： ? / ? 人</p>
+      <p>定員　　： {{ room.capacity }} 人</p>
     </div>
-    <input type="submit" class="join-room-btn" id="join-room" value="入る">
+    <a href="room/{{ room.id }}" type="submit" class="join-room-btn" id="join-room">入る</a>
   </div>
+  {% endfor %}
 </div>
 </div>
 
@@ -89,7 +91,7 @@
     </li>
     {% for room in rooms %}
       <li class="rooms-list-item">
-        <p class="room-name join-room">{{ room.name }}</p>
+        <p class="room-name join-room" data-room-id="{{ room.id }}">{{ room.name }}</p>
         <p class="room-time">{{ room.time }}分</p>
         <p class="room-capacity">{{ room.capacity }}人</p>
       </li>

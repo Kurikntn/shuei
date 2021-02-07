@@ -149,10 +149,13 @@
   border: none;
   width: 150px;
   height: 50px;
+  line-height: 50px;
   background-color: #1919fa;
   font-size: 20px;
   color: white;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
 }
 
 

@@ -29,12 +29,21 @@ function modal() {
     const joinRoom = document.querySelectorAll(".join-room");
     const joinRoomModal = document.querySelector(".join-room-modal");
     const joinRoomClose = document.querySelector(".join-room-close");
+    const joinRoomInfo = document.querySelectorAll(".join-room-info");
 
     // 部屋に入るモーダルを開く処理
     for(let i = 0; i < joinRoom.length; i++){
       joinRoom[i].addEventListener("click", () => {
         overlay.classList.add("open");
         joinRoomModal.classList.add("open");
+        let joinRoomId = joinRoom[i].dataset.roomId;
+        joinRoomInfo.forEach((room) => {
+          if(room.dataset.roomId == joinRoomId){
+            room.style.display = "block";
+          } else {
+            room.style.display = "none";
+          }
+        });
       });
     }
 
@@ -49,7 +58,7 @@ function modal() {
     });
   }
 
-  
+
   // 部屋を閉めるモーダル
   if(document.URL.match(/room/)){
     const closeRoomButton = document.getElementById("chat-room-close");
