@@ -36,6 +36,8 @@ function modal() {
       joinRoom[i].addEventListener("click", () => {
         overlay.classList.add("open");
         joinRoomModal.classList.add("open");
+
+        // 部屋に入るモーダルの表示内容を決める処理
         let joinRoomId = joinRoom[i].dataset.roomId;
         joinRoomInfo.forEach((room) => {
           if(room.dataset.roomId == joinRoomId){
