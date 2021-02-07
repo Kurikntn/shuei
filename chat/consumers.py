@@ -50,7 +50,6 @@ class ChatConsumer( AsyncWebsocketConsumer ):
       'image': data['image'],
       'username': data['username'],
     }
-    print(data['image'])
     await self.send( text_data=json.dumps( data_json ) )
 
   async def join_chat( self ):
