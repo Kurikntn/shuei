@@ -50,7 +50,6 @@ chatImage.addEventListener('change', (e) => {
     canvasContext.drawImage(imageElement, 0, 0);
     imageBase64 = canvasElement.toDataURL("image/png");
   }
-
 });
 
 document.getElementById('preview-close').addEventListener('click', () => {
