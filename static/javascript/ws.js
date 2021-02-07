@@ -41,7 +41,7 @@ chatImage.addEventListener('change', (e) => {
 
   const imageElement = new Image();
   imageElement.src = imageURL;
-  
+
   imageElement.onload = function() {
     const canvasElement = document.createElement('canvas');
     canvasElement.width = imageElement.width;
@@ -90,7 +90,7 @@ g_socket.onmessage = (event) => {
   messageUser.innerText = data["username"];
   message.append(messageUser);
   
-  if(data["message"] && data["image"]){
+  if(data["message"] != "" && data["image"] != ""){
     const messageText = document.createElement('p');
     messageText.setAttribute('class', 'message-text');
     messageText.innerText = data["message"];
@@ -100,7 +100,7 @@ g_socket.onmessage = (event) => {
     messageImage.setAttribute('src', data["image"]);
     messageImage.setAttribute('height', '200px');
     message.append(messageImage); 
-  } else if(data["message"])  {  
+  } else if(data["message"] != "")  {  
     const messageText = document.createElement('p');
     messageText.setAttribute('class', 'message-text');
     messageText.innerText = data["message"];
