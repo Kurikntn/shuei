@@ -77,10 +77,13 @@
 <div class="rooms-container">
   <div class="rooms-top">
     <p class="rooms-top-title">部屋一覧</p>
-    <select id="rooms-selector" name="rooms-order">
-      <option class="rooms-selector-item" value="new">新着順</option>
-      <option class="rooms-selector-item" value="random">ランダム表示</option>
-    </select>
+    <form method="get">
+      {% csrf_token %}
+      <select id="rooms-selector" name="rooms-order" onchange="submit(this.form)">
+        <option class="rooms-selector-item" value="new" {% if rooms_order == "new" %}selected{% endif %}>新着順</option>
+        <option class="rooms-selector-item" value="random" {% if rooms_order == "random" %}selected{% endif %}>ランダム表示</option>
+      </select>
+    </form>
   </div>
   <div class="rooms-main">
   <ul class="rooms-list">

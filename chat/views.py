@@ -10,6 +10,11 @@ import redis
 
 
 def index(request):
+  if('rooms-order' in request.GET):
+    rooms_order = request.GET['rooms-order']
+  else:
+    rooms_order = 'new'
+  print(rooms_order)
   if(request.method == 'POST'):
     print(request.POST)
     new_room = Room(
@@ -21,10 +26,14 @@ def index(request):
     new_room.save()
     return redirect('/room/' + str(new_room.id))
 
-  rooms = Room.objects.order_by('-at')
+  if(rooms_order == 'new'):
+    rooms = Room.objects.order_by('-at')
+  elif(rooms_order == 'random'):
+    rooms = Room.objects.order_by('?')
   t = loader.get_template('index.html')
   c = {
     'rooms': rooms,
+    'rooms_order': rooms_order,
   }
   return HttpResponse(t.render(c, request))
 
