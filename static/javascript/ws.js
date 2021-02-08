@@ -49,7 +49,7 @@ chatImage.addEventListener('change', (e) => {
     const canvasContext = canvasElement.getContext('2d');
     canvasContext.drawImage(imageElement, 0, 0);
     imageBase64 = canvasElement.toDataURL("image/png");
-  }
+  };
 });
 
 document.getElementById('preview-close').addEventListener('click', () => {
@@ -113,4 +113,10 @@ g_socket.onmessage = (event) => {
   }
 
   messages.append(message);
+
+  messages.scrollBy({
+    top: message.clientHeight + 50, //投稿分スクロール
+    // top: messages.clientHeight, //最下部までスクロール
+    behavior: 'smooth'
+  });
 };
