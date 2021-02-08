@@ -4,6 +4,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 class ChatConsumer( AsyncWebsocketConsumer ):
   rooms = None
 
+
   def __init__( self, *args, **kwargs ):
     super().__init__( *args, **kwargs )
 
@@ -15,24 +16,27 @@ class ChatConsumer( AsyncWebsocketConsumer ):
     self.room_number = ''
     self.room_capacity = ''
 
+
   async def connect( self ):
     await self.accept()
+
 
   async def disconnect( self, close_code ):
     await self.leave_chat()
 
+
   async def receive( self, text_data ):
     text_data_json = json.loads( text_data )
-
+    #チャット参加時
     if( 'join' == text_data_json.get( 'data_type' ) ):
       self.user_name = text_data_json['username']
       self.room_number = text_data_json['room_number']
       self.room_capacity = text_data_json['room_capacity']
       await self.join_chat() 
-
+    #チャット離脱時
     elif( 'leave' == text_data_json.get( 'data_type' ) ):
       await self.leave_chat()
-
+    #チャット送信時
     else:
       strMessage = text_data_json['message']
       image = text_data_json['image']
@@ -44,6 +48,7 @@ class ChatConsumer( AsyncWebsocketConsumer ):
       }
       await self.channel_layer.group_send( self.room_name, data )
 
+
   async def chat_message( self, data ):
     data_json = {
       'message': data['message'],
@@ -51,6 +56,7 @@ class ChatConsumer( AsyncWebsocketConsumer ):
       'username': data['username'],
     }
     await self.send( text_data=json.dumps( data_json ) )
+
 
   async def join_chat( self ):
     self.room_name = 'room_%s' % self.room_number
@@ -67,9 +73,13 @@ class ChatConsumer( AsyncWebsocketConsumer ):
     else:
       print("これ以上は入室できません") # 退出処理をしたい
 
+
   async def leave_chat( self ):
     if( '' == self.room_name ):
       return
+    await self.channel_layer.group_discard( self.room_name, self.channel_name)
 
-    del ChatConsumer.rooms[self.room_name]
+    ChatConsumer.rooms[self.room_name]['participants_count'] -= 1
+    if(ChatConsumer.rooms[slef.room_name]['participants_count'] == 0):
+      del ChatConsumer.rooms[self.room_name]
     self.room_name = ''
