@@ -1,7 +1,6 @@
-function modal() {
-  const overlay = document.querySelector(".overlay");
+const overlay = document.querySelector(".overlay");
 
-
+function indexModal() {
   // 部屋を作るモーダル
   const newRoomButton = document.getElementById("new-room-btn");
   const newRoomModal = document.querySelector(".new-room-modal");
@@ -57,10 +56,11 @@ function modal() {
     overlay.classList.remove("open");
     joinRoomModal.classList.remove("open");
   });
+}
 
 
+function roomModal() {
 // 部屋を閉めるモーダル
-
   const closeRoomButton = document.getElementById("chat-room-close");
   const closeRoomModal = document.querySelector(".close-room-modal");
   const closeRoomClose = document.querySelector(".close-room-close");
@@ -82,4 +82,11 @@ function modal() {
   });
 }
 
-window.addEventListener("load", modal);
+
+const roomURL = "/room/"
+
+if(document.URL.match(roomURL)){
+window.addEventListener("load", roomModal);
+} else {
+window.addEventListener("load", indexModal);
+}
