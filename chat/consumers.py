@@ -80,6 +80,6 @@ class ChatConsumer( AsyncWebsocketConsumer ):
     await self.channel_layer.group_discard( self.room_name, self.channel_name)
 
     ChatConsumer.rooms[self.room_name]['participants_count'] -= 1
-    if(ChatConsumer.rooms[slef.room_name]['participants_count'] == 0):
+    if(ChatConsumer.rooms[self.room_name]['participants_count'] == 0):
       del ChatConsumer.rooms[self.room_name]
     self.room_name = ''
