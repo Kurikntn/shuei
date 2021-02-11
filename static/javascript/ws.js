@@ -76,7 +76,7 @@ chatForm.addEventListener("submit", (e) => {
 });
 
 
-const messages = document.getElementById("messages")
+const messages = document.getElementById("messages");
 
 g_socket.onmessage = (event) => {
   let data = JSON.parse(event.data);
