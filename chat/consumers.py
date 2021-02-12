@@ -50,11 +50,19 @@ class ChatConsumer( AsyncWebsocketConsumer ):
 
 
   async def chat_message( self, data ):
-    data_json = {
-      'message': data['message'],
-      'image': data['image'],
-      'username': data['username'],
-    }
+    if( data['count'] != "" ):
+      data_json = {
+        'count' : data['count'],
+        'message': data['message'],
+        'image': data['image'],
+        'username': data['username'],
+      }
+    else:
+      data_json = {
+        'message': data['message'],
+        'image': data['image'],
+        'username': data['username'],
+      }
     await self.send( text_data=json.dumps( data_json ) )
 
 
@@ -69,7 +77,15 @@ class ChatConsumer( AsyncWebsocketConsumer ):
 
     if(ChatConsumer.rooms[self.room_name]['participants_count'] <= int(self.room_capacity)):
       await self.channel_layer.group_add( self.room_name, self.channel_name )
-      print("一名様入りました")
+      print(self.room_name + "に人が入りました")
+      data = {
+        'type': 'chat_message',
+        'count': ChatConsumer.rooms[self.room_name]['participants_count'],
+        'message': '',
+        'image' : '',
+        'username': self.user_name,
+      }
+      await self.channel_layer.group_send( self.room_name, data )
     else:
       print("これ以上は入室できません") # 退出処理をしたい
 

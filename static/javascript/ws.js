@@ -1,8 +1,10 @@
 const g_socket = new WebSocket( "ws://" + window.location.host + window.location.pathname );
 
+const roomCapacity = document.getElementById("room-capacity");
+const roomTime = parseInt(document.getElementById("room-time").innerText);
+
 const nameForm = document.getElementById("name-form");
 const inputName = document.getElementById("input-name");
-const roomCapacity = document.getElementById("room-capacity");
 
 nameForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -16,8 +18,9 @@ nameForm.addEventListener("submit", (e) => {
     JSON.stringify({ "data_type": "join", "username": userName, "room_number": window.location.pathname.substr(6), "room_capacity": roomCapacity.innerText })
   );
 
-  document.querySelector(".waiting-overlay").classList.add("close");
-  document.querySelector(".waiting-modal").classList.add("close");
+  document.querySelector("#name-form").style.display = "none";
+  document.querySelector("#your-name").style.display = "block";
+  document.querySelector("#your-name-content").innerText = userName;
 });
 
 
@@ -77,34 +80,82 @@ chatForm.addEventListener("submit", (e) => {
 
 
 const messages = document.getElementById("messages");
+const participants  = document.getElementById("participants_number");
+let participants_count = 0;
 
 g_socket.onmessage = (event) => {
   let data = JSON.parse(event.data);
 
-  const message = document.createElement('div');
-  message.setAttribute('class', 'message');
+  if(data["count"] == ""){
+    console.log("no count");
+    const message = document.createElement('div');
+    message.setAttribute('class', 'message');
 
-  const messageUser = document.createElement('p');
-  messageUser.setAttribute('class', 'message-user');
-  messageUser.innerText = data["username"];
-  message.append(messageUser);
-  
-  const messageText = document.createElement('p');
-  messageText.setAttribute('class', 'message-text');
-  messageText.innerText = data["message"];
-  message.append(messageText);
+    const messageUser = document.createElement('p');
+    messageUser.setAttribute('class', 'message-user');
+    messageUser.innerText = data["username"];
+    message.append(messageUser);
+    
+    const messageText = document.createElement('p');
+    messageText.setAttribute('class', 'message-text');
+    messageText.innerText = data["message"];
+    message.append(messageText);
 
-  const messageImage = document.createElement('img');
-  messageImage.setAttribute('class', 'message-image');
-  messageImage.setAttribute('src', data["image"]);
-  messageImage.setAttribute('height', '200px');
-  message.append(messageImage); 
+    const messageImage = document.createElement('img');
+    messageImage.setAttribute('class', 'message-image');
+    messageImage.setAttribute('src', data["image"]);
+    messageImage.setAttribute('height', '200px');
+    message.append(messageImage); 
 
-  messages.append(message);
+    messages.append(message);
 
-  messages.scrollBy({
-    top: message.clientHeight + 50, //投稿分スクロール
-    // top: messages.clientHeight, //最下部までスクロール
-    behavior: 'smooth'
-  });
+    messages.scrollBy({
+      top: message.clientHeight + 50, //投稿分スクロール
+      // top: messages.clientHeight, //最下部までスクロール
+      behavior: 'smooth'
+    });
+  } else {
+    participants_count = data["count"];
+    participants.innerHTML = participants_count;
+    if(participants_count == parseInt(roomCapacity.innerText)){
+      timer(roomTime);
+      document.querySelector(".waiting-overlay").classList.add("close");
+      document.querySelector(".waiting-modal").classList.add("close");
+    }
+  }
 };
+
+
+// タイマー
+function timer(time) {
+  let setLimitMinutes = time;
+  let limitTime = (setLimitMinutes * 60 + 1) * 1000;
+
+  let minutes = document.getElementById("limit-minutes");
+  let seconds = document.getElementById("limit-seconds");
+
+  function countDown() {
+    limitTime -= 1000;
+    let limitTimeMinutes = Math.floor(limitTime / 1000 / 60);
+    let limitTimeSeconds = limitTime / 1000 % 60;
+
+    if(limitTime >= 60000){
+      minutes.innerText = limitTimeMinutes + "分";
+      seconds.innerText = limitTimeSeconds + "秒";
+    } else if(limitTime > 0) {
+      minutes.innerText = "";
+      seconds.innerText = limitTimeSeconds + "秒";
+    } else {
+      minutes.innerText = "";
+      seconds.innerText = "0秒";
+    }
+  }
+
+  function roomClose(){
+    document.getElementById("close-form").submit();
+  }
+
+  setInterval(countDown, 1000);
+
+  setTimeout(roomClose, limitTime);
+}

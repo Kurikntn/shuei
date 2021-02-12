@@ -10,10 +10,10 @@
     <input type="text" id="input-name" class="name-form-text" placeholder="ここに名前を入力">
     <input type="submit" class="name-form-submit" value="決定">
   </form>
-  <p class="your-name">あなたの名前：<span>トランプ</span></p>
+  <p id="your-name">あなたの名前：<span id="your-name-content"></span></p>
   <div id="waiting-message">
-    <p>人が集まり次第始まります<br>(30分経っても集まらない場合、部屋は削除されます)</p>
-    <p class="join-count">現在の参加人数：<span>{{ participants_num }} / {{ room.capacity }}</span>人</p>
+    <p>人が集まり次第始まります<br>(30分経っても集まらない場合は、部屋を削除したい)</p>
+    <p class="join-count">現在の参加人数： <span id="participants_number">{{ participants_num }}</span> / {{ room.capacity }} 人</p>
   </div>
 </div>
 
@@ -75,7 +75,8 @@
   </form>
 </div>
 <div class="hidden" id="room-capacity">{{ room.capacity }}</div>
+<div class="hidden" id="room-time">{{ room.time }}</div>
 <script src="{% static 'javascript/ws.js' %}"></script>
-<script src="{% static 'javascript/timer.js' %}"></script>
+<!-- <script src="{% static 'javascript/timer.js' %}"></script> -->
 <script src="{% static 'javascript/preview.js' %}"></script>
 {% endblock %}

@@ -260,9 +260,10 @@
   color: white;
   border: none;
 }
-.your-name {
+#your-name {
   margin-top: 40px;
   display: none;
+  line-height: 23px;
 }
 #waiting-message {
   margin-top: 40px;
