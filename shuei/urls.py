@@ -6,6 +6,6 @@ urlpatterns = [
     path('_admin/', admin.site.urls),
     path('account/', include('django.contrib.auth.urls')),
 
-    path('', chat_views.index),
-    path('room/<int:room_id>', chat_views.room),
+    path('', chat_views.index, name='index'),
+    path('room/<int:room_id>', chat_views.room, name='room'),
 ]
