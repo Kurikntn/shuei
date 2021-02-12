@@ -39,7 +39,12 @@
     <div class="close-room-column">
       <p class="close-room-caution">部屋は削除され、参加しているメンバーも強制的にトップページへ飛ばされます。</p>
     </div>
-    <a href="/" type="submit" id="close-room" class="close-room-btn">部屋を閉める</a>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="close-room-input" value="{{room.id}}">
+      <button type="submit" id="close-room" class="close-room-btn">部屋を閉める</button>
+    </form>
+    <!--a href="/" type="submit" id="close-room" class="close-room-btn">部屋を閉める</a-->
   </div>
 </div>
 </div>

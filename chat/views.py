@@ -16,7 +16,6 @@ def index(request):
     rooms_order = 'new'
   print(rooms_order)
   if(request.method == 'POST'):
-    print(request.POST)
     new_room = Room(
       name = request.POST['name'],
       time = request.POST['room-time'],
@@ -25,7 +24,6 @@ def index(request):
     )
     new_room.save()
     return redirect('/room/' + str(new_room.id))
-
   if(rooms_order == 'new'):
     rooms = Room.objects.order_by('-at')
   elif(rooms_order == 'random'):
@@ -42,6 +40,9 @@ def room(request, room_id):
   room = get_object_or_404(Room, id=room_id)
   redis_cli = redis.Redis(host=settings.ALLOWED_HOSTS[0], port=settings.REDIS_PORT)
   redis_room = redis_cli.zrange("asgi:group:room_" + str(room_id), 0, -1)
+  if(request.method == 'POST'):
+    room.delete()
+    return redirect('index')
 
   t = loader.get_template('room.html')
   c = {

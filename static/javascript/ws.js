@@ -76,7 +76,7 @@ chatForm.addEventListener("submit", (e) => {
 });
 
 
-const messages = document.getElementById("messages")
+const messages = document.getElementById("messages");
 
 g_socket.onmessage = (event) => {
   let data = JSON.parse(event.data);
@@ -89,28 +89,16 @@ g_socket.onmessage = (event) => {
   messageUser.innerText = data["username"];
   message.append(messageUser);
   
-  if(data["message"] != "" && data["image"] != ""){
-    const messageText = document.createElement('p');
-    messageText.setAttribute('class', 'message-text');
-    messageText.innerText = data["message"];
-    message.append(messageText);
-    const messageImage = document.createElement('img');
-    messageImage.setAttribute('class', 'message-image');
-    messageImage.setAttribute('src', data["image"]);
-    messageImage.setAttribute('height', '200px');
-    message.append(messageImage); 
-  } else if(data["message"] != "")  {  
-    const messageText = document.createElement('p');
-    messageText.setAttribute('class', 'message-text');
-    messageText.innerText = data["message"];
-    message.append(messageText);
-  } else {
-    const messageImage = document.createElement('img');
-    messageImage.setAttribute('class', 'message-image');
-    messageImage.setAttribute('src', data["image"]);
-    messageImage.setAttribute('height', '200px');
-    message.append(messageImage); 
-  }
+  const messageText = document.createElement('p');
+  messageText.setAttribute('class', 'message-text');
+  messageText.innerText = data["message"];
+  message.append(messageText);
+
+  const messageImage = document.createElement('img');
+  messageImage.setAttribute('class', 'message-image');
+  messageImage.setAttribute('src', data["image"]);
+  messageImage.setAttribute('height', '200px');
+  message.append(messageImage); 
 
   messages.append(message);
 
