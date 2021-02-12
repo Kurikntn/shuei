@@ -1,5 +1,5 @@
 function timer() {
-  let setLimitMinutes = 30;
+  let setLimitMinutes = 1;
   let limitTime = (setLimitMinutes * 60 + 1) * 1000;
 
   let minutes = document.getElementById("limit-minutes");
@@ -20,13 +20,15 @@ function timer() {
       minutes.innerText = "";
       seconds.innerText = "0秒";
     }
+  }
 
-    if(limitTime == 0){
-      console.log("終了処理");
-    }
+  function roomClose(){
+    document.getElementById("close-form").submit();
   }
 
   setInterval(countDown, 1000);
+
+  setTimeout(roomClose, limitTime);
 }
 
 window.addEventListener("load", timer);
