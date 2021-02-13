@@ -53,9 +53,6 @@ class ChatConsumer( AsyncWebsocketConsumer ):
     if( data['count'] != "" ):
       data_json = {
         'count' : data['count'],
-        'message': data['message'],
-        'image': data['image'],
-        'username': data['username'],
       }
     else:
       data_json = {
@@ -81,9 +78,6 @@ class ChatConsumer( AsyncWebsocketConsumer ):
       data = {
         'type': 'chat_message',
         'count': ChatConsumer.rooms[self.room_name]['participants_count'],
-        'message': '',
-        'image' : '',
-        'username': self.user_name,
       }
       await self.channel_layer.group_send( self.room_name, data )
     else:

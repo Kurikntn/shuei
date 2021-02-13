@@ -87,7 +87,6 @@ g_socket.onmessage = (event) => {
   let data = JSON.parse(event.data);
 
   if(data["count"] == ""){
-    console.log("no count");
     const message = document.createElement('div');
     message.setAttribute('class', 'message');
 
