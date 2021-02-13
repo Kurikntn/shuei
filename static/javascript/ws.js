@@ -86,7 +86,15 @@ let participants_count = 0;
 g_socket.onmessage = (event) => {
   let data = JSON.parse(event.data);
 
-  if(data["count"] == ""){
+  if('count' in data){
+    participants_count = data["count"];
+    participants.innerText = participants_count;
+    if(participants_count == parseInt(roomCapacity.innerText)){
+      timer(roomTime);
+      document.querySelector(".waiting-overlay").classList.add("close");
+      document.querySelector(".waiting-modal").classList.add("close");
+    }
+  } else {
     const message = document.createElement('div');
     message.setAttribute('class', 'message');
 
@@ -113,14 +121,6 @@ g_socket.onmessage = (event) => {
       // top: messages.clientHeight, //最下部までスクロール
       behavior: 'smooth'
     });
-  } else {
-    participants_count = data["count"];
-    participants.innerText = participants_count;
-    if(participants_count == parseInt(roomCapacity.innerText)){
-      timer(roomTime);
-      document.querySelector(".waiting-overlay").classList.add("close");
-      document.querySelector(".waiting-modal").classList.add("close");
-    }
   }
 };
 

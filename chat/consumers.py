@@ -45,22 +45,22 @@ class ChatConsumer( AsyncWebsocketConsumer ):
         'message': strMessage,
         'image' : image,
         'username': self.user_name,
-        'count' : "",
       }
       await self.channel_layer.group_send( self.room_name, data )
 
 
   async def chat_message( self, data ):
-    if( data['count'] != "" ):
+    if('count' in data):
+      print('カウント')
       data_json = {
         'count' : data['count'],
       }
     else:
+      print('チャット')
       data_json = {
         'message': data['message'],
         'image': data['image'],
         'username': data['username'],
-        'count' : data['count'],
       }
     await self.send( text_data=json.dumps( data_json ) )
 
