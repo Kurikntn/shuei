@@ -4,16 +4,25 @@
 {% block content %}
 <div class="waiting-overlay"></div>
 <div class="waiting-modal">
-  <p class="waiting-title">待機室</p>
-  <form class="name-form" id="name-form">
-    <label class="name-form-title" for="name">あなたの名前：</label>
-    <input type="text" id="input-name" class="name-form-text" placeholder="ここに名前を入力">
-    <input type="submit" class="name-form-submit" value="決定">
-  </form>
-  <p id="your-name">あなたの名前：<span id="your-name-content"></span></p>
-  <div id="waiting-message">
-    <p>人が集まり次第始まります<br>(30分経っても集まらない場合は、部屋を削除したい)</p>
-    <p class="join-count">現在の参加人数： <span id="participants_number">{{ participants_num }}</span> / {{ room.capacity }} 人</p>
+  <div id="vacant-modal">
+    <p class="waiting-title">待機室</p>
+    <form class="name-form" id="name-form">
+      <label class="name-form-title" for="name">あなたの名前：</label>
+      <input type="text" id="input-name" class="name-form-text" placeholder="ここに名前を入力">
+      <input type="submit" class="name-form-submit" value="決定">
+    </form>
+    <p id="your-name">あなたの名前：<span id="your-name-content"></span></p>
+    <div id="waiting-message">
+      <p>参加者が集まり次第始まります<br>(10分経っても集まらない場合、部屋は削除されます)</p>
+      <p class="join-count">現在の参加人数： <span id="participants_number">{{ participants_num }}</span> / {{ room.capacity }} 人</p>
+    </div>
+  </div>
+  <div id="not-vacant-modal">
+      <p class="waiting-title">エラー(満室)</p>
+    <div id="waiting-message">
+      <p>この部屋は満室です。<br><br>以下のボタンからトップページに戻れます。</p>
+    </div>
+    <a href="/" class="leave-room-btn">部屋一覧へ戻る</a>
   </div>
 </div>
 

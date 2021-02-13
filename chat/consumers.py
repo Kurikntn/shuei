@@ -55,6 +55,11 @@ class ChatConsumer( AsyncWebsocketConsumer ):
       data_json = {
         'count' : data['count'],
       }
+    elif('error' in data):
+      print('満室')
+      data_json = {
+        'error' : data['error'],
+      }
     else:
       print('チャット')
       data_json = {
@@ -83,7 +88,13 @@ class ChatConsumer( AsyncWebsocketConsumer ):
       }
       await self.channel_layer.group_send( self.room_name, data )
     else:
-      print("これ以上は入室できません") # 退出処理をしたい
+      await self.channel_layer.group_add( self.room_name, self.channel_name )
+      print("これ以上は入室できません")
+      data = {
+        'type': 'chat_message',
+        'error': '満室',
+      }
+      await self.channel_layer.group_send( self.room_name, data )
 
 
   async def leave_chat( self ):

@@ -272,6 +272,23 @@
 .join-count {
   margin-top: 20px;
 }
+#not-vacant-modal {
+  display: none;
+}
+.leave-room-btn {
+  display: block;
+  margin: 30px auto 0;
+  border: none;
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  background-color: #1919fa;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
 
 
 /* room.htmlのヘッダー部分 */

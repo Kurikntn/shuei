@@ -93,6 +93,14 @@ g_socket.onmessage = (event) => {
       timer(roomTime);
       document.querySelector(".waiting-overlay").classList.add("close");
       document.querySelector(".waiting-modal").classList.add("close");
+      messages.style.display = "block";
+      messages.innerHTML = null;
+    }
+  } else if('error' in data) {
+    document.querySelector("#vacant-modal").style.display = "none";
+    document.querySelector("#not-vacant-modal").style.display = "block";
+    if(!document.querySelector(".waiting-modal").classList.contains("close")){
+      messages.style.display = "none";
     }
   } else {
     const message = document.createElement('div');
@@ -117,8 +125,7 @@ g_socket.onmessage = (event) => {
     messages.append(message);
 
     messages.scrollBy({
-      top: message.clientHeight + 50, //投稿分スクロール
-      // top: messages.clientHeight, //最下部までスクロール
+      top: message.clientHeight + 25 + 25, // 25はmargin分
       behavior: 'smooth'
     });
   }
