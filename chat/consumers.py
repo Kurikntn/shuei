@@ -45,6 +45,7 @@ class ChatConsumer( AsyncWebsocketConsumer ):
         'message': strMessage,
         'image' : image,
         'username': self.user_name,
+        'count' : "",
       }
       await self.channel_layer.group_send( self.room_name, data )
 
@@ -59,6 +60,7 @@ class ChatConsumer( AsyncWebsocketConsumer ):
         'message': data['message'],
         'image': data['image'],
         'username': data['username'],
+        'count' : data['count'],
       }
     await self.send( text_data=json.dumps( data_json ) )
 
