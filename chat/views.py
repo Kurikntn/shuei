@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.conf import settings
 from chat.models import Room
+from django.db.models import F
 
 import datetime
 import redis
@@ -25,9 +26,9 @@ def index(request):
     new_room.save()
     return redirect('/room/' + str(new_room.id))
   if(rooms_order == 'new'):
-    rooms = Room.objects.order_by('-at')
+    rooms = Room.objects.filter(participants_num__lt=F('capacity')).order_by('-at')
   elif(rooms_order == 'random'):
-    rooms = Room.objects.order_by('?')
+    rooms = Room.objects.filter(participants_num__lt=F('capacity')).order_by('?')
   t = loader.get_template('index.html')
   c = {
     'rooms': rooms,
@@ -42,6 +43,9 @@ def room(request, room_id):
   redis_room = redis_cli.zrange("asgi:group:room_" + str(room_id), 0, -1)
   if(request.method == 'POST'):
     room.delete()
+    return redirect('index')
+
+  if(room.participants_num == room.capacity):
     return redirect('index')
 
   t = loader.get_template('room.html')
