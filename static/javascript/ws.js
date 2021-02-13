@@ -115,7 +115,7 @@ g_socket.onmessage = (event) => {
     });
   } else {
     participants_count = data["count"];
-    participants.innerHTML = participants_count;
+    participants.innerText = participants_count;
     if(participants_count == parseInt(roomCapacity.innerText)){
       timer(roomTime);
       document.querySelector(".waiting-overlay").classList.add("close");
