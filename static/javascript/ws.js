@@ -114,16 +114,19 @@ g_socket.onmessage = (event) => {
     messageUser.innerText = data["username"];
     message.append(messageUser);
     
-    const messageText = document.createElement('p');
-    messageText.setAttribute('class', 'message-text');
-    messageText.innerText = data["message"];
-    message.append(messageText);
+    if(!data["message"] == ""){
+      const messageText = document.createElement('p');
+      messageText.setAttribute('class', 'message-text');
+      messageText.innerText = data["message"];
+      message.append(messageText);
+    }
 
-    const messageImage = document.createElement('img');
-    messageImage.setAttribute('class', 'message-image');
-    messageImage.setAttribute('src', data["image"]);
-    messageImage.setAttribute('height', '200px');
-    message.append(messageImage); 
+    if(!data["image"] == ""){
+      const messageImage = document.createElement('img');
+      messageImage.setAttribute('class', 'message-image');
+      messageImage.setAttribute('src', data["image"]);
+      message.append(messageImage); 
+    }
 
     messages.append(message);
 
