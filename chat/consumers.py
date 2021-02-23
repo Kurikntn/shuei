@@ -60,6 +60,12 @@ class ChatConsumer( AsyncWebsocketConsumer ):
       data_json = {
         'error' : data['error'],
       }
+    elif('leave' in data):
+      print('退出')
+      data_json = {
+        'leave' : data['leave'],
+        'minus_count': data['minus_count'],
+      }
     else:
       print('チャット')
       data_json = {
@@ -103,6 +109,22 @@ class ChatConsumer( AsyncWebsocketConsumer ):
     await self.channel_layer.group_discard( self.room_name, self.channel_name)
 
     ChatConsumer.rooms[self.room_name]['participants_count'] -= 1
+
+    if(ChatConsumer.rooms[self.room_name]['participants_count'] >= int(self.room_capacity)):
+      data = {
+        'type': 'chat_message',
+        'leave': '定員以上',
+        'minus_count': ChatConsumer.rooms[self.room_name]['participants_count'],
+      }
+      await self.channel_layer.group_send( self.room_name, data )
+    else:
+      data = {
+        'type': 'chat_message',
+        'leave': '定員割れ',
+        'minus_count': ChatConsumer.rooms[self.room_name]['participants_count'],
+      }
+      await self.channel_layer.group_send( self.room_name, data )
+
     if(ChatConsumer.rooms[self.room_name]['participants_count'] == 0):
       del ChatConsumer.rooms[self.room_name]
     self.room_name = ''
