@@ -354,6 +354,9 @@
 .after-join {
   display: none;
 }
+.waiting-error {
+  margin: 60px 0;
+}
 
 
 /* room.htmlのヘッダー部分 */
