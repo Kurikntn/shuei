@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.conf import settings
@@ -16,6 +17,8 @@ def index(request):
   else:
     rooms_order = 'new'
   print(rooms_order)
+  if('room-closed' in request.GET):
+    messages.add_message(request, messages.INFO, "部屋が閉められました。")
   if(request.method == 'POST'):
     new_room = Room(
       name = request.POST['name'],
@@ -46,6 +49,7 @@ def room(request, room_id):
     return redirect('index')
 
   if(room.participants_num == room.capacity):
+    messages.add_message(request, messages.ERROR, "部屋に入れませんでした。")
     return redirect('index')
 
   capacity_limit_time = room.at + datetime.timedelta(hours=9) + datetime.timedelta(minutes=11)
