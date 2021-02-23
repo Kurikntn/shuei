@@ -6,14 +6,14 @@
 <div class="waiting-modal">
   <div id="vacant-modal">
     <p class="waiting-title">待機室</p>
-    <form class="name-form" id="name-form">
-      <label class="name-form-title" for="name">あなたの名前：</label>
-      <input type="text" id="input-name" class="name-form-text" placeholder="ここに名前を入力">
+    <form class="name-form before-join" id="name-form">
+      <input type="text" id="input-name" class="name-form-text" placeholder="あなたの名前を入力" maxlength="20">
       <input type="submit" class="name-form-submit" value="決定">
     </form>
-    <p id="your-name">あなたの名前：<span id="your-name-content"></span></p>
-    <div id="waiting-message">
-      <p>参加者が集まり次第始まります<br>(10分経っても集まらない場合、部屋は削除されます)</p>
+    <p id="your-name" class="after-join">あなたの名前：<span id="your-name-content"></span></p>
+    <div id="waiting-messages">
+      <p class="waiting-message before-join">名前を入力することで参加者としてカウントされます</p>
+      <p class="waiting-message after-join">参加者が集まり次第、部屋が開始されます</p>
       <p class="join-count">現在の参加人数： <span id="participants_number">{{ participants_num }}</span> / {{ room.capacity }} 人</p>
       <p class="waiting-message">{{ capacity_limit_time.hour }}時{{ capacity_limit_time.minute}}分までに集まらなかった場合、この部屋は削除されます</p>
     </div>
@@ -48,7 +48,7 @@
       <p class="close-room-name">{{ room.name }}</p>
     </div>
     <div class="close-room-column">
-      <p class="close-room-caution">部屋は削除され、参加しているメンバーも強制的にトップページへ飛ばされます。</p>
+      <p class="close-room-caution">部屋は削除され、参加しているメンバーもトップページへ戻されます。</p>
     </div>
 
     <!-- <form method="post" id="close-form">
