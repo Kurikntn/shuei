@@ -22,3 +22,6 @@ class Command(BaseCommand):
         ((room.at + datetime.timedelta(minutes=10)) < now)
       ):
         room.delete()
+
+      if(room.participants_num >= room.capacity):
+        room.delete()
