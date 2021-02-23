@@ -84,6 +84,7 @@ chatForm.addEventListener("submit", (e) => {
 });
 
 
+const waitingModal = document.querySelector(".waiting-modal");
 const messages = document.getElementById("messages");
 const participants  = document.getElementById("participants_number");
 let participants_count = 0;
@@ -98,11 +99,13 @@ g_socket.onmessage = (event) => {
       timer(roomTime);
       document.querySelector(".waiting-overlay").classList.add("close");
       document.querySelector(".waiting-modal").classList.add("close");
+      waitingModal.classList.add("close");
     }
   } else if('error' in data) {
     document.querySelector("#vacant-modal").style.display = "none";
     document.querySelector("#not-vacant-modal").style.display = "block";
     if(!document.querySelector(".waiting-modal").classList.contains("close")){
+    if(!waitingModal.classList.contains("close")){
       messages.remove();
     }
   } else {
