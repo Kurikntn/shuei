@@ -193,6 +193,23 @@
 }
 
 
+/* index.htmlのチャット所説明部分 */
+.chat-jo-info {
+  width: 80%;
+  margin: 20px auto 0;
+}
+.chat-jo-info-title {
+  font-size: 20px;
+}
+.chat-jo-info-text {
+  margin-top: 5px;
+  line-height: 22px;
+}
+.chat-jo-info-text span {
+  color: #a00;
+}
+
+
 /* index.htmlのメイン部分 */
 .rooms-container {
   display: flex;
