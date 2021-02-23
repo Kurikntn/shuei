@@ -48,7 +48,7 @@ def room(request, room_id):
     room.delete()
     return redirect('index')
 
-  if(room.participants_num == room.capacity):
+  if(room.participants_num >= room.capacity):
     messages.add_message(request, messages.ERROR, "部屋に入れませんでした。")
     return redirect('index')
 
