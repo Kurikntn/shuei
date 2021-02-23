@@ -15,6 +15,40 @@
 }
 
 
+/* フラッシュメッセージ */
+.flash {
+  position: fixed;
+  bottom: 10vh;
+  left: 5vw;
+}
+.flash-container {
+  background-color: #cbcbff;
+  color: #0b0b7a;
+  padding: 0 20px;
+  min-width: 40vw;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.flash-text {
+  line-height: 50px;
+}
+.flash-close-btn {
+  margin: 15px 0 15px 30px;
+  border: none;
+  padding: 0;
+  background: none;
+  width: 20px;
+  cursor: pointer;
+}
+.flash-close-icon {
+  font-size: 20px;
+  display: block;
+  margin: 0 auto;
+}
+
+
 /* index.htmlのヘッダー部分 */
 .top-container {
   display: flex;
