@@ -5,6 +5,8 @@ const roomTime = parseInt(document.getElementById("room-time").innerText);
 
 const nameForm = document.getElementById("name-form");
 const inputName = document.getElementById("input-name");
+const beforeJoin = document.querySelectorAll(".before-join");
+const afterJoin = document.querySelectorAll(".after-join");
 
 nameForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -18,9 +20,12 @@ nameForm.addEventListener("submit", (e) => {
     JSON.stringify({ "data_type": "join", "username": userName, "room_number": window.location.pathname.substr(6), "room_capacity": roomCapacity.innerText })
   );
 
-  document.querySelector("#name-form").style.display = "none";
-  document.querySelector("#your-name").style.display = "block";
   document.querySelector("#your-name-content").innerText = userName;
+
+  for(let i = 0; i < beforeJoin.length; i++){
+    beforeJoin[i].style.display = "none";
+    afterJoin[i].style.display = "block";
+  }
 });
 
 
