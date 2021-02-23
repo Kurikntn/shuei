@@ -48,9 +48,12 @@ def room(request, room_id):
   if(room.participants_num == room.capacity):
     return redirect('index')
 
+  capacity_limit_time = room.at + datetime.timedelta(hours=9) + datetime.timedelta(minutes=11)
+
   t = loader.get_template('room.html')
   c = {
     'room': room,
     'participants_num': len(redis_room),
+    'capacity_limit_time': capacity_limit_time.time(),
   }
   return HttpResponse(t.render(c, request))
