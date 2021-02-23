@@ -99,6 +99,8 @@ g_socket.onmessage = (event) => {
       timer(roomTime);
       document.querySelector(".waiting-overlay").classList.add("close");
       waitingModal.classList.add("close");
+      chatText.disabled = false;
+      chatImage.disabled = false;
     }
   } else if('error' in data) {
     document.querySelector("#vacant-modal").style.display = "none";
