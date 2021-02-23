@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="top-container">
-  <a href="" class="top-logo"><img class="top-logo-image" src="{% static 'images/chat-jo.png' %}" height="60px"></a>
+  <a href="/" class="top-logo"><img class="top-logo-image" src="{% static 'images/chat-jo.png' %}" height="80px"></a>
   <button class="top-btn" id="new-room-btn">部屋を作る</button>
 </div>
 
@@ -29,8 +29,8 @@
   <form method="post" class="new-room-form" id="new-room">
     {% csrf_token %}
     <div class="new-room-column">
-      <label for="name">部屋の名前</label>
-      <input type="text" name="name" id="room-name" placeholder="例：雑談したい">
+      <label for="name">部屋の名前(最大50文字)</label>
+      <input type="text" name="name" id="room-name" placeholder="例：雑談したい" maxlength="50">
     </div>
     <div class="new-room-column">
       <label for="time">時間制限：</label>
@@ -122,4 +122,5 @@
   </ul>
   </div>
 </div>
+<script src="{% static 'javascript/flash.js' %}"></script>
 {% endblock %}
