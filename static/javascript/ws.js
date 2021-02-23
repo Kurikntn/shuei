@@ -139,10 +139,14 @@ g_socket.onmessage = (event) => {
 
     messages.append(message);
 
-    messages.scrollBy({
-      top: message.clientHeight + 25 + 25, // 25はmargin分
-      behavior: 'smooth'
-    });
+    function scroll(){
+      messages.scrollBy({
+        top: message.clientHeight,
+        behavior: 'smooth'
+      });
+    }
+
+    setTimeout(scroll, 10);
   }
 };
 
