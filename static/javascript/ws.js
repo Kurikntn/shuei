@@ -108,6 +108,12 @@ g_socket.onmessage = (event) => {
     if(!waitingModal.classList.contains("close")){
       messages.remove();
     }
+  } else if('leave' in data){
+    participants_count = data["minus_count"];
+    participants.innerText = participants_count;
+    if(data["leave"] == "定員割れ" && waitingModal.classList.contains("close")){
+      closeRoom.click();
+    }
   } else {
     const message = document.createElement('div');
     message.setAttribute('class', 'message');
@@ -167,7 +173,7 @@ function timer(time) {
   }
 
   function roomClose(){
-    document.getElementById("close-form").submit();
+    closeRoom.click();
   }
 
   setInterval(countDown, 1000);
