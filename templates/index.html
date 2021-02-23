@@ -7,6 +7,21 @@
   <button class="top-btn" id="new-room-btn">部屋を作る</button>
 </div>
 
+{% if messages %}
+  <ul class="flash" id="flash">
+    {% for message in messages %}
+    {% if forloop.first %}
+      <li class="flash-container">
+        <p class="flash-text">{{ message }}</p>
+        <button type="button" class="flash-close-btn" id="flash-close-btn">
+          <span class="fa fa-times flash-close-icon"></span>
+        </button>
+      </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}
+
 <div class="new-room-modal">
 <div class="new-room-wrapper">
   <button type="button" class="new-room-close"><span class="fas fa-times new-room-close-icon"></span></button>
