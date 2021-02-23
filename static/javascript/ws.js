@@ -98,13 +98,11 @@ g_socket.onmessage = (event) => {
     if(participants_count == parseInt(roomCapacity.innerText)){
       timer(roomTime);
       document.querySelector(".waiting-overlay").classList.add("close");
-      document.querySelector(".waiting-modal").classList.add("close");
       waitingModal.classList.add("close");
     }
   } else if('error' in data) {
     document.querySelector("#vacant-modal").style.display = "none";
     document.querySelector("#not-vacant-modal").style.display = "block";
-    if(!document.querySelector(".waiting-modal").classList.contains("close")){
     if(!waitingModal.classList.contains("close")){
       messages.remove();
     }
