@@ -1,1 +1,1 @@
-web: unicorn shuei.wsgi —log-file -
+web: gunicorn shuei.wsgi —log-file -
