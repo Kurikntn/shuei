@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.conf import settings
 from chat.models import Room
 from django.db.models import F
+from django.utils import timezone
 
 import datetime
 import redis
@@ -24,7 +25,7 @@ def index(request):
       name = request.POST['name'],
       time = request.POST['room-time'],
       capacity = request.POST['room-capacity'],
-      at = datetime.datetime.now()
+      at = timezone.now()
     )
     new_room.save()
     return redirect('/room/' + str(new_room.id))
