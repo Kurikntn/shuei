@@ -7,9 +7,11 @@ from django.conf import settings
 from chat.models import Room
 from django.db.models import F
 from django.utils import timezone
+from chat.utils import connect
 
 import datetime
 import redis
+
 
 
 def index(request):
@@ -44,7 +46,8 @@ def index(request):
 def room(request, room_id):
   room = get_object_or_404(Room, id=room_id)
   print(room.name)
-  redis_cli = redis.Redis(host=settings.ALLOWED_HOSTS[0], port=settings.REDIS_PORT)
+  #redis_cli = redis.Redis(host=settings.ALLOWED_HOSTS[0], port=settings.REDIS_PORT)
+  redis_cli = connect()
   redis_room = redis_cli.zrange("asgi:group:room_" + str(room_id), 0, -1)
   if(request.method == 'POST'):
     room.delete()

@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 from chat.models import Room
+from chat.utils import connect
 
 import datetime
 import redis
@@ -12,7 +13,8 @@ class Command(BaseCommand):
   def handle(self, *args, **options):
     now = datetime.datetime.now(datetime.timezone.utc)
     rooms = Room.objects.all()
-    redis_cli = redis.Redis(host=settings.ALLOWED_HOSTS[0], port=settings.REDIS_PORT)
+    #redis_cli = redis.Redis(host=settings.ALLOWED_HOSTS[0], port=settings.REDIS_PORT)
+    redis_cli = connect()
     for room in rooms:
       redis_room = redis_cli.zrange("asgi:group:room_" + str(room.id), 0, -1)    
       room.participants_num = len(redis_room)
