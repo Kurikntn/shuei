@@ -1,4 +1,8 @@
-const g_socket = new WebSocket( "wss://" + window.location.host + window.location.pathname );
+if(window.location.protocol = "https:"){
+  const g_socket = new WebSocket( "wss://" + window.location.host + window.location.pathname );
+} else {
+  const g_socket = new WebSocket( "ws://" + window.location.host + window.location.pathname );
+}
 
 const roomCapacity = document.getElementById("room-capacity");
 const roomTime = parseInt(document.getElementById("room-time").innerText);
