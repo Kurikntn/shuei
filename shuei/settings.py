@@ -117,6 +117,7 @@ STATICFILES_DIRS = (
 
 REDIS_PORT = 6379
 
+ADMINS = [('kuri', 'watanaber@tracks.co.jp'), ('sanada', 'chikunotani223@gmail.com')]
 
 try:
   from shuei.local_settings import *
