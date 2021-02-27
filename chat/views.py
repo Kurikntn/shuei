@@ -43,6 +43,7 @@ def index(request):
 
 def room(request, room_id):
   room = get_object_or_404(Room, id=room_id)
+  print(room.name)
   redis_cli = redis.Redis(host=settings.ALLOWED_HOSTS[0], port=settings.REDIS_PORT)
   redis_room = redis_cli.zrange("asgi:group:room_" + str(room_id), 0, -1)
   if(request.method == 'POST'):
@@ -54,6 +55,7 @@ def room(request, room_id):
     return redirect('index')
 
   capacity_limit_time = room.at + datetime.timedelta(hours=9) + datetime.timedelta(minutes=11)
+  print(capacity_limit_time)
 
   t = loader.get_template('room.html')
   c = {
