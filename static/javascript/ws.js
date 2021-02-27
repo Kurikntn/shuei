@@ -1,4 +1,4 @@
-const g_socket = new WebSocket( "ws://" + window.location.host + window.location.pathname );
+const g_socket = new WebSocket( "wss://" + window.location.host + window.location.pathname );
 
 const roomCapacity = document.getElementById("room-capacity");
 const roomTime = parseInt(document.getElementById("room-time").innerText);
