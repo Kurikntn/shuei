@@ -5,11 +5,10 @@ import os
 
 
 def connect():
-  if setting.REDIS_URL:
+  if settings.REDIS_URL:
     return redis.from_url(
       url=os.environ.get(settings.REDIS_URL),
       decode_responses=True,
     )
   else:
     return redis.Redis(host=settings.ALLOWED_HOSTS[0], port=settings.REDIS_PORT)
-

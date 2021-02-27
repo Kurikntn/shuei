@@ -13,7 +13,6 @@ import datetime
 import redis
 
 
-
 def index(request):
   if('rooms-order' in request.GET):
     rooms_order = request.GET['rooms-order']
