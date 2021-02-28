@@ -127,10 +127,10 @@
   border: none;
   width: 150px;
   height: 50px;
-  background-color: #1919fa;
+  background-color: #aaa;
   font-size: 20px;
   color: white;
-  cursor: pointer;
+  cursor: default;
 }
 
 
@@ -344,7 +344,7 @@
   width: 150px;
   height: 50px;
   line-height: 50px;
-  background-color: #aaa;
+  background-color: #1919fa;
   font-size: 18px;
   color: white;
   cursor: pointer;
