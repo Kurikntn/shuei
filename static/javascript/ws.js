@@ -1,7 +1,9 @@
-if(window.location.protocol = "https:"){
-  const g_socket = new WebSocket( "wss://" + window.location.host + window.location.pathname );
+let g_socket;
+
+if(window.location.protocol == "https:"){
+  g_socket = new WebSocket( "wss://" + window.location.host + window.location.pathname );
 } else {
-  const g_socket = new WebSocket( "ws://" + window.location.host + window.location.pathname );
+  g_socket = new WebSocket( "ws://" + window.location.host + window.location.pathname );
 }
 
 const roomCapacity = document.getElementById("room-capacity");
