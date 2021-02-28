@@ -2,22 +2,16 @@
 @media(max-width: 1024px){
   /* index.htmlの部屋を作るモーダル */
   .new-room-modal {
+    top: 30%;
     left: 15%;
     width: 70%;
-    height: 370px;
-  }
-  .new-room-btn {
-    margin: 40px auto 0;
   }
 
   /* index.htmlの部屋に入るモーダル */
   .join-room-modal {
+    top: 30%;
     left: 15%;
     width: 70%;
-    height: 370px;
-  }
-  .join-room-btn {
-    margin: 40px auto 0;
   }
 
   /* index.htmlのチャット所説明部分 */
@@ -31,9 +25,9 @@
 
   /* room.htmlの待機モーダル */
   .waiting-modal {
+    top: 30%;
     left: 15%;
     width: 70%;
-    height: 370px;
   }
   .waiting-title {
     font-size: 22px;
@@ -43,6 +37,9 @@
   }
   .name-form-text {
     width: 40%;
+  }
+  #your-name {
+    margin-top: 30px;
   }
   #waiting-messages {
     font-size: 15px;
@@ -56,12 +53,9 @@
 
   /* room.htmlの部屋を閉めるモーダル */
   .close-room-modal {
+    top: 30%;
     left: 15%;
     width: 70%;
-    height: 370px;
-  }
-  .close-room-column {
-    margin-top: 50px;
   }
 
   /* room.htmlのチャット表示部分 */
@@ -156,9 +150,6 @@
   .join-count {
     margin-top: 20px;
   }
-  .leave-room-btn {
-    margin: 25px auto 0;
-  }
 
   /* room.htmlのヘッダー部分 */
   .chat-header {
@@ -190,9 +181,6 @@
     top: 20%;
     left: 12.5%;
     width: 75%;
-  }
-  .close-room-column {
-    margin-top: 30px;
   }
 
   /* room.htmlのチャット表示部分 */
