@@ -103,6 +103,11 @@ button {
   outline: none;
 }
 
+input[type="submit"], input[type="button"] { 
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
 input {
   outline: none;
 }
