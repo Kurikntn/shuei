@@ -316,10 +316,10 @@
   width: 180px;
 }
 .name-form-submit {
-  background-color: #1919fa;
+  background-color: #aaa;
   color: white;
   border: none;
-  cursor: pointer;
+  cursor: default;
 }
 #your-name {
   margin-top: 25px;

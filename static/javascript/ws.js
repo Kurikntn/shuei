@@ -11,8 +11,23 @@ const roomTime = parseInt(document.getElementById("room-time").innerText);
 
 const nameForm = document.getElementById("name-form");
 const inputName = document.getElementById("input-name");
+const nameSubmit = document.getElementById("name-submit");
 const beforeJoin = document.querySelectorAll(".before-join");
 const afterJoin = document.querySelectorAll(".after-join");
+
+inputName.oninput = userName;
+
+function userName(e) {
+  if(e.target.value == ""){
+    nameSubmit.disabled = true;
+    nameSubmit.style.backgroundColor = "#aaa";
+    nameSubmit.style.cursor = "default";
+  } else {
+    nameSubmit.disabled = false;
+    nameSubmit.style.backgroundColor = "#1919fa";
+    nameSubmit.style.cursor = "pointer";
+  }
+}
 
 nameForm.addEventListener("submit", (e) => {
   e.preventDefault();
