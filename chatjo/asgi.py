@@ -5,7 +5,7 @@ import chat.routing
 import os
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shuei.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chatjo.settings')
 
 # application = get_asgi_application()
 django_asgi_app = get_asgi_application()

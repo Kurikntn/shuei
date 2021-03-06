@@ -1,8 +1,7 @@
 from pathlib import Path
-import dj_database_url
 import os
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '*b1xubas5l2yeoipa#k50-p#mf_1)fnzg)arht#v%vhcx(7kt5'
@@ -10,7 +9,7 @@ SECRET_KEY = '*b1xubas5l2yeoipa#k50-p#mf_1)fnzg)arht#v%vhcx(7kt5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["shuei.herokuapp.com"]
+ALLOWED_HOSTS = ['ec2-176-32-71-165.ap-northeast-1.compute.amazonaws.com']
 
 
 # Application definition
@@ -34,10 +33,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'shuei.urls'
+ROOT_URLCONF = 'chatjo.urls'
 
 TEMPLATES = [
     {
@@ -55,7 +53,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'shuei.wsgi.application'
+WSGI_APPLICATION = 'chatjo.wsgi.application'
 
 
 # Database
@@ -64,19 +62,16 @@ WSGI_APPLICATION = 'shuei.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shueidb',
-        'USER': 'user',
-        'PASSWORD': 'shueipass',
-        'HOST': 'host',
-        'PORT': '',
+        'NAME': 'devdb',
+        'USER': 'devuser',
+        'PASSWORD': 'devuser',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-
 
 # Channels
-ASGI_APPLICATION = 'shuei.asgi.application'
+ASGI_APPLICATION = 'chatjo.asgi.application'
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
@@ -119,13 +114,4 @@ REDIS_PORT = 6379
 REDIS_URL = 'redis://:pad20a92d3563f59a1bc9b18ce65de70f14f5317dbfc45869567350a54d25ae47@ec2-3-224-164-127.compute-1.amazonaws.com:18539'
 
 ADMINS = [('kuri', 'watanaber@tracks.co.jp'), ('sanada', 'chikunotani223@gmail.com')]
-
-try:
-  from shuei.local_settings import *
-except ImportError:
-  pass
-
-if not DEBUG:
-  import django_heroku
-  django_heroku.settings(locals())
 
