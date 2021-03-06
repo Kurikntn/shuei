@@ -7,7 +7,7 @@ import os
 def connect():
   if settings.REDIS_URL:
     return redis.from_url(
-      url=os.environ.get(settings.REDIS_URL),
+            url=os.getenv('REDIS_URL', settings.REDIS_URL + ':' + str(settings.REDIS_PORT)),
       decode_responses=True,
     )
   else:

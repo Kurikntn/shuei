@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*b1xubas5l2yeoipa#k50-p#mf_1)fnzg)arht#v%vhcx(7kt5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['ec2-176-32-71-165.ap-northeast-1.compute.amazonaws.com']
 
@@ -104,14 +104,15 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static'),
 )
 
 REDIS_PORT = 6379
-REDIS_URL = 'redis://:pad20a92d3563f59a1bc9b18ce65de70f14f5317dbfc45869567350a54d25ae47@ec2-3-224-164-127.compute-1.amazonaws.com:18539'
+#REDIS_URL = 'redis://:pad20a92d3563f59a1bc9b18ce65de70f14f5317dbfc45869567350a54d25ae47@ec2-3-224-164-127.compute-1.amazonaws.com:18539'
+REDIS_URL = 'redis://localhost'
 
 ADMINS = [('kuri', 'watanaber@tracks.co.jp'), ('sanada', 'chikunotani223@gmail.com')]
 
