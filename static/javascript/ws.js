@@ -5,9 +5,7 @@ if(window.location.protocol == "https:"){
 } else {
   g_socket = new WebSocket( "ws://" + window.location.host + window.location.pathname );
 }
-
 const roomCapacity = document.getElementById("room-capacity");
-const roomTime = parseInt(document.getElementById("room-time").innerText);
 
 const nameForm = document.getElementById("name-form");
 const inputName = document.getElementById("input-name");

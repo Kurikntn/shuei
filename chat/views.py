@@ -45,10 +45,8 @@ def index(request):
 def room(request, room_id):
   room = get_object_or_404(Room, id=room_id)
   print(room.name)
-  #redis_cli = redis.Redis(host=settings.ALLOWED_HOSTS[0], port=settings.REDIS_PORT)
   redis_cli = connect()
   redis_room = redis_cli.zrange("asgi:group:room_" + str(room_id), 0, -1)
-  #redis_room = 'egg'
   if(request.method == 'POST'):
     room.delete()
     return redirect('index')

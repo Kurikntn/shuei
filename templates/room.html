@@ -2,6 +2,10 @@
 {% load static %}
 
 {% block content %}
+<script type="text/javascript">
+  var roomTime={{room.time}};
+</script>
+
 <div class="waiting-overlay"></div>
 <div class="waiting-modal">
   <div id="vacant-modal">
@@ -82,7 +86,6 @@
   </form>
 </div>
 <div class="hidden" id="room-capacity">{{ room.capacity }}</div>
-<div class="hidden" id="room-time">{{ room.time }}</div>
-<script src="{% static 'javascript/ws.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascript/ws.js' %}"></script>
 <script src="{% static 'javascript/preview.js' %}"></script>
 {% endblock %}
