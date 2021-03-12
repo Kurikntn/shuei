@@ -2,9 +2,13 @@
 {% load static %}
 
 {% block content %}
+
+{% autoescape off %}
 <script type="text/javascript">
-  var roomTime={{room.time}};
+  let roomTime = parseInt("{{room.time}}");
+  let roomCapacity = "{{room.capacity}}";
 </script>
+{% endautoescape %}
 
 <div class="waiting-overlay"></div>
 <div class="waiting-modal">
@@ -85,7 +89,6 @@
     <input type="submit" class="chat-form-btn" value="送信">
   </form>
 </div>
-<div class="hidden" id="room-capacity">{{ room.capacity }}</div>
 <script type="text/javascript" src="{% static 'javascript/ws.js' %}"></script>
-<script src="{% static 'javascript/preview.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascript/preview.js' %}"></script>
 {% endblock %}

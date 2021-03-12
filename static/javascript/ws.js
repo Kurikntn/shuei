@@ -5,7 +5,6 @@ if(window.location.protocol == "https:"){
 } else {
   g_socket = new WebSocket( "ws://" + window.location.host + window.location.pathname );
 }
-const roomCapacity = document.getElementById("room-capacity");
 
 const nameForm = document.getElementById("name-form");
 const inputName = document.getElementById("input-name");
@@ -36,7 +35,7 @@ nameForm.addEventListener("submit", (e) => {
   }
   
   g_socket.send(
-    JSON.stringify({ "data_type": "join", "username": userName, "room_number": window.location.pathname.substr(6), "room_capacity": roomCapacity.innerText })
+    JSON.stringify({ "data_type": "join", "username": userName, "room_number": window.location.pathname.substr(6), "room_capacity": roomCapacity })
   );
 
   document.querySelector("#your-name-content").innerText = userName;
@@ -114,7 +113,7 @@ g_socket.onmessage = (event) => {
   if('count' in data){
     participants_count = data["count"];
     participants.innerText = participants_count;
-    if(participants_count == parseInt(roomCapacity.innerText)){
+    if(participants_count == parseInt(roomCapacity)){
       timer(roomTime);
       document.querySelector(".waiting-overlay").classList.add("close");
       waitingModal.classList.add("close");
