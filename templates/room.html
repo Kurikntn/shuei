@@ -60,11 +60,11 @@
 
     <!-- <form method="post" id="close-form">
       {% csrf_token %}
+    </form> -->
+    <form method="post" action="/">
+      {% csrf_token %}
       <input type="hidden" name="close-room-input" value="{{room.id}}">
       <button type="submit" id="close-room" class="close-room-btn">部屋を閉める</button>
-    </form> -->
-    <form method="get" action="/">
-      <input type="submit" id="close-room" class="close-room-btn" name="room-closed" value="閉める"> 
     </form>
 
   </div>
