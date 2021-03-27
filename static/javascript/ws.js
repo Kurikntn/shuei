@@ -1,9 +1,9 @@
 let g_socket;
 
 if(window.location.protocol == "https:"){
-  g_socket = new WebSocket( "wss://" + window.location.host + window.location.pathname + /ws/);
+  g_socket = new WebSocket( "wss://" + window.location.host + "/ws/" + window.location.pathname);
 } else {
-  g_socket = new WebSocket( "ws://" + window.location.host + window.location.pathname + /ws/);
+  g_socket = new WebSocket( "ws://" + window.location.host + "/ws/" +  window.location.pathname);
 }
 
 const nameForm = document.getElementById("name-form");
