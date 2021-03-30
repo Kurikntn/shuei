@@ -2,14 +2,12 @@
 @media(max-width: 1024px){
   /* index.htmlの部屋を作るモーダル */
   .new-room-modal {
-    top: 30%;
     left: 15%;
     width: 70%;
   }
 
   /* index.htmlの部屋に入るモーダル */
   .join-room-modal {
-    top: 30%;
     left: 15%;
     width: 70%;
   }
@@ -25,7 +23,6 @@
 
   /* room.htmlの待機モーダル */
   .waiting-modal {
-    top: 30%;
     left: 15%;
     width: 70%;
   }
@@ -53,7 +50,6 @@
 
   /* room.htmlの部屋を閉めるモーダル */
   .close-room-modal {
-    top: 30%;
     left: 15%;
     width: 70%;
   }
@@ -89,14 +85,14 @@
 
   /* index.htmlの部屋を作るモーダル */
   .new-room-modal {
-    top: 20%;
+    top: 17%;
     left: 12.5%;
     width: 75%;
   }
 
   /* index.htmlの部屋に入るモーダル */
   .join-room-modal {
-    top: 20%;
+    top: 17%;
     left: 12.5%;
     width: 75%;
   }
@@ -129,7 +125,7 @@
 
   /* room.htmlの待機モーダル */
   .waiting-modal {
-    top: 20%;
+    top: 17%;
     left: 12.5%;
     width: 75%;
     padding: 30px 20px;
@@ -178,7 +174,7 @@
 
   /* room.htmlの部屋を閉めるモーダル */
   .close-room-modal {
-    top: 20%;
+    top: 17%;
     left: 12.5%;
     width: 75%;
   }
@@ -187,7 +183,7 @@
   .chat-main {
     margin-top: 75px;
     padding: 5px 15px;
-    height: calc(100vh - 75px - 60px);
+    height: calc(var(--vh) * 100 - 75px - 60px);
   }
   .message-image {
     max-height: 150px;

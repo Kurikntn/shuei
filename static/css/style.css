@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh) * 100);
   background: black;
   opacity: 0.3;
 }
@@ -119,6 +119,8 @@
 .new-room-column #room-name {
   width: 100%;
   margin-top: 10px;
+  padding: 0 2px;
+  line-height: 19px;
 }
 .new-room-btn {
   display: block;
@@ -281,7 +283,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh) * 100);
   background: black;
   opacity: 0.3;
 }
@@ -312,12 +314,15 @@
 }
 .name-form-text {
   width: 180px;
+  padding: 0 2px;
+  line-height: 19px;
 }
 .name-form-submit {
   background-color: #aaa;
   color: white;
   border: none;
   cursor: default;
+  height: 23px;
 }
 #your-name {
   margin-top: 25px;
@@ -471,7 +476,7 @@
   padding: 10px 30px;
   overflow-y: scroll;
   width: 100%;
-  height: calc(100vh - 80px - 80px);
+  height: calc(var(--vh) * 100 - 80px - 80px);
 }
 .message {
   padding: 10px 0;
