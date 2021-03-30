@@ -1,7 +1,9 @@
 function flash(){
-  document.getElementById("flash-close-btn").addEventListener("click", () => {
-    document.querySelector("#flash").style.display = "none";
-  });
+  if(document.getElementById("flash-close-btn") != null){
+    document.getElementById("flash-close-btn").addEventListener("click", () => {
+      document.querySelector("#flash").style.display = "none";
+    });
+  }
 }
 
 window.addEventListener("load", flash);
