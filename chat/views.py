@@ -63,3 +63,8 @@ def room(request, room_id):
     'capacity_limit_time': capacity_limit_time.time(),
   }
   return HttpResponse(t.render(c, request))
+
+
+def google(request):
+  t = loader.get_template('google67811a07e1a912c4.html')
+  return HttpResponse(t.render({}, request))
