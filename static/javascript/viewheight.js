@@ -4,3 +4,4 @@ function viewHeight(){
 }
 
 window.addEventListener("load", viewHeight);
+window.addEventListener("resize", viewHeight);
