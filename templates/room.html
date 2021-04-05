@@ -15,7 +15,7 @@
   <div id="vacant-modal">
     <p class="waiting-title">待機室</p>
     <form class="name-form before-join" id="name-form">
-      <input type="text" id="input-name" class="name-form-text" placeholder="名前を入力(15文字まで)" maxlength="15">
+      <input type="text" id="input-name" class="name-form-text" placeholder="名前を入力(15文字まで)" pattern=".*\S+.*" title="空白文字のみはNGです" maxlength="15">
       <input type="submit" class="name-form-submit" id="name-submit" value="決定" disabled>
     </form>
     <p id="your-name" class="after-join">あなたの名前：<span id="your-name-content"></span></p>
