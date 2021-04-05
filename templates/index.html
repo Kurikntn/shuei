@@ -29,8 +29,8 @@
   <form method="post" class="new-room-form" id="new-room">
     {% csrf_token %}
     <div class="new-room-column">
-      <label for="name">部屋の名前(最大50文字)</label>
-      <input type="text" name="name" id="room-name" placeholder="例：雑談したい" maxlength="50">
+      <label for="name">部屋の名前</label>
+      <input type="text" name="name" id="room-name" placeholder="部屋の名前を入力(30文字まで)" maxlength="30">
     </div>
     <div class="new-room-column">
       <label for="time">時間制限：</label>
