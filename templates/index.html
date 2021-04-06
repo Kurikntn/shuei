@@ -33,7 +33,7 @@
       <input type="text" name="name" id="room-name" placeholder="部屋の名前を入力(30文字まで)" pattern=".*\S+.*" title="空白文字のみはNGです" maxlength="30">
     </div>
     <div class="new-room-column">
-      <label for="time">時間制限：</label>
+      <label for="time">制限時間：</label>
       <select id="new-room-time" name="room-time">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -121,7 +121,7 @@
   <ul class="rooms-list">
     <li class="rooms-list-top">
       <p class="room-name">部屋の名前</p>
-      <p class="room-time">時間制限</p>
+      <p class="room-time">制限時間</p>
       <p class="room-capacity">定員</p>
     </li>
     {% for room in rooms %}
