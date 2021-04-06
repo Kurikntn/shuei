@@ -85,14 +85,14 @@
 
   /* index.htmlの部屋を作るモーダル */
   .new-room-modal {
-    top: 17%;
+    top: 15%;
     left: 12.5%;
     width: 75%;
   }
 
   /* index.htmlの部屋に入るモーダル */
   .join-room-modal {
-    top: 17%;
+    top: 15%;
     left: 12.5%;
     width: 75%;
   }
@@ -123,9 +123,28 @@
     width: 60px;
   }
 
+  /* index.htmlのお問い合わせ部分 */
+  .contact-wrapper {
+    width: 90%;
+  }
+
+  /* rule.htmlおよびprivacy.html */
+  .rule-wrapper {
+    width: 90%;
+  }
+  .rule-description {
+    line-height: 20px;
+  }
+  .rule-content {
+    line-height: 20px;
+  }
+  .rule-list-item {
+    line-height: 20px;
+  }
+
   /* room.htmlの待機モーダル */
   .waiting-modal {
-    top: 17%;
+    top: 15%;
     left: 12.5%;
     width: 75%;
     padding: 30px 20px;
@@ -174,7 +193,7 @@
 
   /* room.htmlの部屋を閉めるモーダル */
   .close-room-modal {
-    top: 17%;
+    top: 15%;
     left: 12.5%;
     width: 75%;
   }

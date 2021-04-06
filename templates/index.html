@@ -67,6 +67,10 @@
     </div>
     <input type="submit" class="new-room-btn" id="new-room-submit" value="作る" disabled>
   </form>
+  <div class="modal-footer">
+    <a href="rule" target="_blank" rel="noopener noreferrer" class="modal-footer-item">利用規約</a>
+    <a href="privacy" target="_blank" rel="noopener noreferrer" class="modal-footer-item">プライバシーポリシー</a>
+  </div>
 </div>
 </div>
 
@@ -89,6 +93,10 @@
     <a href="room/{{ room.id }}" type="submit" class="join-room-btn" id="join-room">入る</a>
   </div>
   {% endfor %}
+  <div class="modal-footer">
+    <a href="rule" target="_blank" rel="noopener noreferrer" class="modal-footer-item">利用規約</a>
+    <a href="privacy" target="_blank" rel="noopener noreferrer" class="modal-footer-item">プライバシーポリシー</a>
+  </div>
 </div>
 </div>
 
@@ -125,6 +133,10 @@
     {% endfor %}
   </ul>
   </div>
+</div>
+
+<div class="contact-wrapper">
+  <a href="#" target="_blank" rel="noopener noreferrer" class="contact-link">お問い合わせはこちら(Googleフォーム)</a>
 </div>
 <script type="text/javascript" src="{% static 'javascript/flash.js' %}"></script>
 <script type="text/javascript" src="{% static 'javascript/new_room.js' %}"></script>

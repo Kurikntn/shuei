@@ -197,6 +197,29 @@
 }
 
 
+/* index.htmlモーダル内の利用規約等記述部分 */
+.modal-footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.modal-footer-item {
+  text-decoration: none;
+  color: black;
+  font-size: 12px;
+  padding: 0 12px;
+}
+.modal-footer-item + a {
+  border-left: solid 1px #ccc;
+}
+.modal-footer-item:hover {
+  text-decoration: underline;
+}
+.modal-footer-item:visited {
+  color: black;
+}
+
+
 /* index.htmlのチャット所説明部分 */
 .chat-jo-info {
   width: 80%;
@@ -207,7 +230,8 @@
 }
 .chat-jo-info-text {
   margin-top: 5px;
-  line-height: 22px;
+ 
+ line-height: 22px;
 }
 .chat-jo-info-text span {
   color: #a00;
@@ -273,6 +297,72 @@
   width: 85px;
   border-left: 1px solid black;
   padding: 5px 10px;
+}
+
+
+/* index.htmlのお問い合わせ部分 */
+.contact-wrapper {
+  width: 80%;
+  margin: 30px auto;
+  text-align: right;
+}
+.contact-link {
+  color: #333;
+  font-size: 14px;
+}
+.contact-link:visited {
+  color: #333;
+}
+
+
+/* rule.htmlおよびprivacy.html */
+.rule-wrapper {
+  width: 80%;
+  margin: 20px auto;
+}
+.rule-logo {
+  display: block;
+  width: 210px;
+  margin: 0 auto;
+}
+.rule-title {
+  font-weight: bold;
+  margin-top: 30px;
+  line-height: 25px;
+}
+.rule-description {
+  line-height: 25px;
+}
+.rule-item {
+  margin-top: 30px;
+}
+.rule-number {
+  font-weight: bold;
+  line-height: 25px;
+}
+.rule-content {
+  line-height: 25px;
+}
+.rule-list {
+  list-style: inside;
+  list-style-type: decimal;
+}
+.rule-list-item {
+  line-height: 25px;
+}
+.rule-list-item.child {
+  padding-left: 1.5em;
+}
+.rule-close-btn {
+  display: block;
+  width: 150px;
+  margin: 30px auto;
+  border: 0;
+  padding: 0 auto;
+  background: none;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 
