@@ -75,6 +75,16 @@ def room(request, room_id):
   return HttpResponse(t.render(c, request))
 
 
+def rule(request):
+  t = loader.get_template('rule.html')
+  return HttpResponse(t.render({}, request))
+
+
+def privacy(request):
+  t = loader.get_template('privacy.html')
+  return HttpResponse(t.render({}, request))
+
+
 def google(request):
   t = loader.get_template('google67811a07e1a912c4.html')
   return HttpResponse(t.render({}, request))

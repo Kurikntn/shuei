@@ -10,5 +10,7 @@ urlpatterns = [
     path('rule', chat_views.rule, name='rule'),
     path('privacy', chat_views.privacy, name='privacy'),
     path('room/<int:room_id>', chat_views.room, name='room'),
+    path('privacy', chat_views.privacy, name='privacy'),
+    path('rule', chat_views.rule, name='rule'),
     path('google67811a07e1a912c4.html', chat_views.google, name='google'),
 ]
