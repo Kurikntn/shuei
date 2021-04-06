@@ -45,6 +45,16 @@ def index(request):
   return HttpResponse(t.render(c, request))
 
 
+def rule(request):
+  t = loader.get_template('rule.html')
+  return HttpResponse(t.render({}, request))
+
+
+def privacy(request):
+  t = loader.get_template('privacy.html')
+  return HttpResponse(t.render({}, request))
+
+
 def room(request, room_id):
   room = get_object_or_404(Room, id=room_id)
   redis_cli = connect()

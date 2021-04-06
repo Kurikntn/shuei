@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="rule-wrapper">
+  <img class="rule-logo" src="{% static 'images/chat-jo.png' %}" height="80px">
+  <h1 class="rule-title">プライバシーポリシー</h1>
+
+  <div class="rule-item">
+    <h2 class="rule-number">・個人情報の利用目的</h2>
+    <p class="rule-content">当サイトではお問い合わせの際、メールアドレス等の個人情報を入力いただく場合があります。取得した個人情報は、お問い合わせに対する回答や必要な情報をメールでご連絡する場合に利用させていただくものであり、これらの目的以外では利用しません。</p>
+  </div>
+
+  <div class="rule-item">
+    <h2 class="rule-number">・アクセス解析</h2>
+    <p class="rule-content">当サイトでは、「Google Analytics」を用いたアクセス解析をしています。Google Analyticsはトラフィックデータの収集のためにCookie（クッキー）を使用しております。トラフィックデータは匿名で収集されており、個人を特定するものではありません。Cookieはお使いのブラウザで無効にすることができます。</p>
+  </div>
+
+  <div class="rule-item">
+    <h2 class="rule-number">・リンクについて</h2>
+    <p class="rule-content">当サイトはリンクフリーです。リンクを行う場合の許可や連絡は不要です。</p>
+  </div>
+  
+  <button class="rule-close-btn" type="button">このページを閉じる</button>
+</div>
+{% endblock %}
