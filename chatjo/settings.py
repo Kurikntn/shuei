@@ -9,7 +9,7 @@ SECRET_KEY = '*b1xubas5l2yeoipa#k50-p#mf_1)fnzg)arht#v%vhcx(7kt5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['chatjo.corkbat.com']
+ALLOWED_HOSTS = ['chatjo-dev.haganega.com']
 
 
 # Application definition
