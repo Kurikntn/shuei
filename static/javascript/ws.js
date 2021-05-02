@@ -61,12 +61,10 @@ const chatText = document.getElementById("chat-text");
 const chatImage = document.getElementById("image-input");
 let imageBase64 = "";
 
-chatImage.addEventListener('change', (e) => {
+document.getElementById("image-input").addEventListener('change', (e) => {
   const file = e.target.files[0];
-  const imageURL = window.URL.createObjectURL(file);
-
   const imageElement = new Image();
-  imageElement.src = imageURL;
+  imageElement.src = window.URL.createObjectURL(file);
 
   imageElement.onload = function() {
     const canvasElement = document.createElement('canvas');
